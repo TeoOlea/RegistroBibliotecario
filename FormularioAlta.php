@@ -11,14 +11,14 @@
 	<body>
 		<div class="header">
 			<table>
-			<tr>
-				<th class="logo"><img src="images/uaem.png" width="100"  alt="UAEM" title="UAEM" /></th>
-                <th class="txt">Universidad Autónoma del Estado de Morelos <br />
-            	   Dirección de Desarrollo de Bibliotecas <br />
-                   Biblioteca Central Universitaria <br />
-				</th>
-				<th class="logo"><img src="images/bcu.png" width="100" alt="BCU" title="BCU" /></th>
- 			</tr>
+				<tr>
+					<th class="logo"><img src="images/uaem.png" width="100"  alt="UAEM" title="UAEM" /></th>
+					<th class="txt">Universidad Autónoma del Estado de Morelos <br />
+					   Dirección de Desarrollo de Bibliotecas <br />
+					   Biblioteca Central Universitaria <br />
+					</th>
+					<th class="logo"><img src="images/bcu.png" width="100" alt="BCU" title="BCU" /></th>
+				</tr>
 			</table>
 		</div>
 		
@@ -44,7 +44,7 @@
 				</li>
 				<li>
 					<label for="matricula">Matricula o No. de Control: </label>
-					<input type="text" name="matricula" required autofocus placeholder="Digita los datos" >
+					<input type="text" name="matricula" required autofocus max=13 placeholder="Digita los datos" >
 				</li>
 				<li>
 					<label for="nombre"> Nombre(s): </label>
