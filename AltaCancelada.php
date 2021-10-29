@@ -14,7 +14,10 @@
 	</head>
 	
 	<body>
-
+		<?php
+			session_start();
+			$tipoDeCancelar = $_SESSION['tipo_salida'];
+		?>
 		<div class="header">
 			<table>
 				<tr>
@@ -54,10 +57,17 @@
 		
 		<div>
 			<br />
-			<a href="FormularioAlta.php">Regresar</a>
+			<?php
+				
+				if( $tipoDeCancelar == "cancelar" ){
+					echo "<a href='FormularioAlta.php'>Regresar</a>";
+				}else if( $tipoDeCancelar == "cancelar-externo" ){
+					echo "<a href='FormularioAltaExterno.php'>Regresar</a>";
+				}
+			?>
 			<br />
 		</div>
-		<br />
+		<br/>
 		
 		
 		<div class="footer">

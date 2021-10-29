@@ -4,36 +4,18 @@
 
     $mysqli =new mysqli ($host,$user,$pw, $db);
 	$mysqli->set_charset("utf8");
-	
-	$matricula = $_SESSION['matricula'];
+		
+	$matricula = $_SESSION['curp'];
 	$nombre = $_SESSION['nombre'];
 	$apellidos = $_SESSION['apes'];
-	$idUni_Acad = $_SESSION['uni_aca'];
-	$idProg_Edu = $_SESSION['pro_edu'];
+	$idTipoUsuExt = $_SESSION['usu_ext'];
 	$idTipo = $_SESSION['ExtTipo'];
 	$genero = $_SESSION['genero'];
 	$email = $_SESSION['email'];
 	
-	/*Codigo para confirmar el ID con la opción elegida
-	
-	//Definir el nombre de la unidad academica
-	$sql_query = "SELECT nom_uniaca FROM uniacademica WHERE IDuniaca  = $Uni_Acad";
-	$query = $mysqli->query($sql_query);
-	$ArrayUniAcademica = mysqli_fetch_array( $query );
-	$idUniAcademica = $ArrayUniAcademica['nom_uniaca'];
-	*/
-	
-	//Definir el nombre y el nivel del programa educativo
-	$sql_query = "SELECT * FROM programedu WHERE IDprogramedu = $idProg_Edu";
-	$query = $mysqli->query($sql_query);
-	$ArrayProgramaEducativo = mysqli_fetch_array($query);
-	//$idProgramaEducativo = $ArrayProgramaEducativo['nom_programedu'];
-	$nivelProgramaEducativo = $ArrayProgramaEducativo['nivel'];
-	//echo '<script>alert("'.$nivelProgramaEducativo.'");</script>';
-	
 	/*
-	//Definir el nombre del tipo de usuario
-	$sql_query = "SELECT tusuario FROM tipousuario WHERE IDusuario = $idTipo";
+	//Definir el nombre del tipo de usuario externo
+	$sql_query = "SELECT tusuarioext FROM tipousuarioext WHERE IDusuext = $idTipo";
 	$query = $mysqli->query($sql_query);
 	$ArrayTipoUsuario = mysqli_fetch_array( $query ) ;
 	$idTipoUsuario = $ArrayTipoUsuario['tusuario'];
@@ -42,13 +24,9 @@
 	echo '<script>alert("'.$matricula.'");</script>';
 	echo '<script>alert("'.$nombre.'");</script>';
 	echo '<script>alert("'.$apellidos.'");</script>';
-	echo '<script>alert("'.$Uni_Acad.'");</script>';
-	echo '<script>alert("'.$Prog_Edu.'");</script>';
-	echo '<script>alert("'.$nivelProgramaEducativo.'");</script>';
 	echo '<script>alert("'.$idTipoUsuario.'");</script>';
 	echo '<script>alert("'.$genero.'");</script>';
 	echo '<script>alert("'.$email.'");</script>';
-	echo '<script>alert("'.$mail.'");</script>';
 	*/
 	
 	//Antes de darlo de alta verificaremos que no esté en la BD validando su matricula 261021 Teo
@@ -56,9 +34,9 @@
 	$query = $mysqli->query( $sqlquery0 );
 	if( mysqli_num_rows( $query ) == 0 ){
 		
-		//Segmento de código dará de alta al usuario
+		//Segmento de código dará de alta al usuario externo
 		$sqlquery1 = "INSERT INTO usuariosbibli(matricula, codigobarra, `nombre(s)`, apellidos, idtipo, id_uni_acad, idpe, nivel, email, sexo) VALUES
-				( '$matricula', '', '$nombre', '$apellidos', '$idTipo', '$idUni_Acad', '$idProg_Edu', '$nivelProgramaEducativo', '$email', '$genero')";
+				( '$matricula', '', '$nombre', '$apellidos', '$idTipoUsuExt', '$idTipo', '', '', '$email', '$genero')";
 		//echo $sqlquery1;
 		
 		if( !$query = $mysqli->query( $sqlquery1 ) ){

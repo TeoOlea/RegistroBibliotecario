@@ -13,6 +13,11 @@
 	
 	<body>
 
+		<?php
+			session_start();
+			$tipoDeAlta = $_SESSION['tipo_salida'];
+		?>
+		
 		<div class="header">
 			<table>
 				<tr>
@@ -35,9 +40,16 @@
 		
 		<div>
 			<br />
-			<a href="FormularioAlta.php">Regresar</a>
+			<?php
+				if( $tipoDeAlta == "alta" ){
+					echo "<a href='FormularioAlta.php'>Regresar</a>";
+				}else if( $tipoDeAlta == "alta-externo" ){
+					echo "<a href='FormularioAltaExterno.php'>Regresar</a>";
+				}
+			?>
 			<br />
 		</div>
+		<br/>
 		
 		
 		<div class="footer">
