@@ -37,15 +37,15 @@
 				</li>
 				<li>
 					<label for="curp">CURP o RFC </label>
-					<input type="text" name="curp" required="required" autofocus onKeyUp="this.value = this.value.toUpperCase();" placeholder="Digita tu CURP en mayúsculas" >
+					<input type="text" name="curp" required="required" autofocus onKeyUp="ConvertirMayusculas(this)" placeholder="Digita tu CURP en mayúsculas" >
 				</li>
 				<li>
 					<label for="nombre"> Nombre/s: </label>
-					<input type="text" name="nombre" required="required" onKeyUp="this.value = this.value.toUpperCase();" placeholder="Digita tu nombre/s" >
+					<input type="text" name="nombre" required="required" onKeyUp="ConvertirMayusculas(this)" placeholder="Digita tu nombre/s" >
 				</li>
 				<li>
 					<label for="apes"> Apellidos: </label>
-					<input type="text" name="apes"  required="required" onKeyUp="this.value = this.value.toUpperCase();" placeholder="Digita tus apellidos" >
+					<input type="text" name="apes"  required="required" onKeyUp="ConvertirMayusculas(this)" placeholder="Digita tus apellidos" >
 				</li>
 				<li>
 					<label for="ExtTipo"> Tipo usuario: </label>
