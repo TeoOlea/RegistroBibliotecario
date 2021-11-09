@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Alta de usuario</title>
-		<meta charset="utf-8">
-		<link rel="stylesheet" type="text/css" href="css/bibli.css">
-		<script src = "js/functions.js"></script>
+		<script src="./js/functions.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/bibli.css"> 
 		<link rel="icon" type="image/png" href="images/favicon.ico" />
+		<meta charset="utf-8">
+		<title>Alta de usuario</title>
 	</head>
 	
 	<body>
@@ -27,49 +27,7 @@
 			include('conexion.php');
 			$mysqli =new mysqli ($host,$user,$pw, $db);
 			$mysqli->set_charset("utf8");
-			
-			//Vamos a hacer una prueba sobre la consulta de usuarios existentes en la BD y evaluar si un usuario existe dentro
-			//de la base de datos o nom_programedu
-			$sqlquery0 = "SELECT `matricula` FROM usuariosbibli WHERE `matricula` != '' AND `matricula` IS NOT NULL";
-			$query = $mysqli->query( $sqlquery0 );
-			//
-			$arreglo_matricula = [];
-			$index_arrmat = 0;
-			while( $columna_matricula = mysqli_fetch_array($query) ){
-				//echo $columna_matricula['matricula']."<br/>";
-				$arreglo_matricula[$index_arrmat] = $columna_matricula['matricula'];
-				$index_arrmat++;
-			}
-			//
-			$sqlquery0 = "SELECT `codigobarra` FROM usuariosbibli WHERE `codigobarra` != '' AND `codigobarra` IS NOT NULL";
-			$query = $mysqli->query( $sqlquery0 );
-			//
-			$arreglo_codigobarra = [];
-			$index_codbar = 0;
-			while( $columna_codigobarra = mysqli_fetch_array($query) ){
-				//echo $columna_codigobarra['codigobarra']."<br/>";
-				$arreglo_codigobarra[$index_codbar] = $columna_codigobarra['codigobarra'];
-				$index_codbar++;
-			}
-			//Arreglos con los datos de las matriculas y los codigos de barras guardados en $arreglo_matricula y $arreglo_codigobarra
-			/*
-			echo "<pre>";
-			var_dump( $arreglo_matricula );
-			echo "</pre>";
-			echo "<pre>";
-			var_dump( $arreglo_codigobarra );
-			echo "</pre>";
-			
-			$json_matriculas = json_encode( $arreglo_matricula );
-			echo "<pre>";
-			var_dump( $json_matriculas );
-			echo "</pre>";
-			echo $arreglo_matricula[0]."<br/>";
-			echo( json_encode( $arreglo_matricula ) )."<br/>";
-			echo $json_matriculas ."<br/>";
-			*/
 		?>
-
 		<div class="clearfix">
 			<div class=" content">
 			<!-- De las opciones de los submit mandamos la opción a DefOpcionForm para elegir que hacer despues -->
@@ -85,17 +43,16 @@
 					</p>
 				</li>
 				<li>
-					<label for="matricula">Matricula, Código de Barras o No. de Control: </label>
-					<!-- Se recomienda poner los nombres de las funciones a javascript en comilla sencilla dado que la función json_encode incluyé comillas en sus cadena provocando errores al interpretar PHP -->
-					<input type="text" id="matricula" name="matricula" required autofocus onKeyUp="ConvertirMayusculas(this)" max=13 placeholder="Digita los datos" onblur='ValidarExistencia( this.value, <?php echo json_encode( $arreglo_matricula ); ?>, <?php echo json_encode( $arreglo_codigobarra ); ?> )' >
+					<label for="matricula">Matricula o No. de Control: </label>
+					<input type="text" name="matricula" required autofocus max=13 placeholder="Digita los datos" >
 				</li>
 				<li>
 					<label for="nombre"> Nombre(s): </label>
-					<input type="text" name="nombre" required onKeyUp="ConvertirMayusculas(this)" placeholder="Digita tu(s) nombre(s)" >
+					<input type="text" name="nombre" required onKeyUp="this.value = this.value.toUpperCase();" placeholder="Digita tu(s) nombre(s)" >
 				</li>
 				<li>
 					<label for="apes"> Apellidos: </label>
-					<input type="text" name="apes" required onKeyUp="ConvertirMayusculas(this)" placeholder="Digita tus apellidos" >
+					<input type="text" name="apes" required onKeyUp="this.value = this.value.toUpperCase();" placeholder="Digita tus apellidos" >
 				</li>
 				<!-- ----------------------------------------------------------------------- -->
 				<!-- --------------Agregaremos los nuevos campos para el registro inicial con QR--------------------------------------------------------- -->
@@ -132,7 +89,7 @@
 						<option value="" selected>Seleccione:</option>
 						<?php
 							//echo '<script>alert("Hola Mundo");</script>';
-							$sqlquery1 = "SELECT * FROM tipousuario WHERE IDusuario != '5'";
+							$sqlquery1 = "SELECT * FROM tipousuario";
 							$query = $mysqli->query($sqlquery1);
 							while( $tabla_programedu = mysqli_fetch_array($query) ){
 								echo "<option value='".$tabla_programedu['IDusuario']."'>".$tabla_programedu['tusuario']."</option>";
@@ -154,8 +111,8 @@
 				<br/>
 				<br/>
 					<input type="hidden" value="Opcion" id="OpcionElegida" name="OpcionElegida" />
-					<input type="submit" value="Dar de alta" id="evento_alta" name="evento_alta" onclick="ValidarRequired()" />
-					<input type="submit" value="Cancelar" id="evento_cancelar" name="evento_cancelar" onclick="NoValidarRequired()" />
+					<input type="submit" value="Dar de alta" id="evento_alta" name="evento_alta" onclick="javascript:ValidarRequired();"/>
+					<input type="submit" value="Cancelar" id="evento_cancelar" name="evento_cancelar" onclick="javascript:NoValidarRequired();" />
 				</form>
 				<!-- Ejemplo de un formulario con varios botones Teo 22/10/2021
 				<form action="DefOpcionForm.php" name="form1" id="form1" method="post">
