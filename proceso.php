@@ -14,10 +14,11 @@
     $mysqli =new mysqli ($host,$user,$pw, $db);
 	$mysqli->set_charset("utf8");
 	
-	//echo '<script>alert("'.$_SESSION['matricula'].'");</script>';
+	echo "$_POST[user]";
+	echo "alerta";
+	//echo '<script>alert("'.$matricula.'");</script>';
 	if( isset($_POST['user']) && !empty($_POST['user']) ){
-		//Buscamos por matricula
-		$sql = "SELECT * FROM usuariosbibli WHERE matricula = '$_SESSION[matricula]'";
+		$sql = "SELECT matricula, `nombre(s)`, apellidos, idtipo, id_uni_acad, idpe, nivel, email, sexo FROM usuariosbibli WHERE matricula = '$_POST[user]'";
 		if( !$resultado = $mysqli->query($sql) ){
 			// ¡Oh, no! La consulta falló. 
 			$_SESSION['mensaje']="Lo sentimos, este sitio web está experimentando problemas.";
@@ -34,11 +35,10 @@
 		}
    
 		$usuarioencon = $resultado->fetch_assoc();
-		$_SESSION['nombre'] = $usuarioencon['nombre(s)']." ".$usuarioencon['apellidos'];
+		$_SESSION['nombre'] = $usuarioencon['nombre(s)']." ". $usuarioencon['apellidos'];
 		$_SESSION['proedu'] = $usuarioencon['idpe'];
 		$_SESSION['genero'] = $usuarioencon['sexo'];
-		
-		//Buscamos que tipo de usuario es
+	
 		$sql1 = "SELECT tusuario FROM tipousuario WHERE IDusuario = '$usuarioencon[idtipo]'";
 		if( !$cargoen = $mysqli->query($sql1) ){
 			// ¡Oh, no! La consulta falló. 
@@ -50,7 +50,7 @@
 			// ¡Oh, no hay filas! Unas veces es lo previsto, pero otras
 			// no. Nosotros decidimos. En este caso, ¿podría haber sido
 			// actor_id demasiado grande? 
-			$_SESSION['mensaje']="Lo sentimos. No se pudo encontrar una coincidencia para cargo de Usuario con registro '$_POST[IDTipo]'. Inténtelo de nuevo.";
+			$_SESSION['mensaje']="Lo sentimos. No se pudo encontrar una coincidencia para cargo de Usuario con registro $_POST[IDTipo]. Inténtelo de nuevo.";
 			header("Location: error.php");
 			exit;
 		}
@@ -58,10 +58,8 @@
 		$puesto = $cargoen->fetch_assoc();
 		$_SESSION['cargo'] =  $puesto['tusuario'];
 		
-		//Buscamos que programa de estudios tiene
-		$sql2 = "SELECT `nom_programedu` FROM programedu WHERE IDprogramedu  = '$usuarioencon[idpe]'";
-		//echo '<script>alert("'.$sql2.'");</script>';
-		if ( !$cargope = $mysqli->query($sql2) ){
+		$sql2 = "SELECT nom_programedu FROM programaedu WHERE IDprogramedu  = $usuarioencon[idpe]";
+		if (!$cargope = $mysqli->query($sql2)){
 			// ¡Oh, no! La consulta falló. 
 			$_SESSION['mensaje']="Lo sentimos, no se cuenta con el programa educativo que buscas.";
 			header("Location: error.php");
@@ -71,31 +69,32 @@
 			// ¡Oh, no hay filas! Unas veces es lo previsto, pero otras
 			// no. Nosotros decidimos. En este caso, ¿podría haber sido
 			// actor_id demasiado grande? 
-			$_SESSION['mensaje']="Lo sentimos. No se pudo encontrar una coincidencia para Programa educativo vigente con registro '$usuarioencon[idpe]'. Inténtelo de nuevo.";
+			$_SESSION['mensaje']="Lo sentimos. No se pudo encontrar una coincidencia para Programa educativo vigente con registro $usuarioencon[IDPE]. Inténtelo de nuevo.";
 			header("Location: error.php");
 			exit;
 		}
 		
-		//Agregar la condición pára verificar que el usuario no está registrado
-		$query = "SELECT count(matricula) as numero FROM reg_visitas WHERE matricula like '$_SESSION[matricula]' && estatus = 0";
-		$sql3 = mysqli_query( $mysqli, $query );
-		$contando = mysqli_fetch_array($sql3);
-		$_SESSION['validar']=$contando['numero'];//numero es el apodo al resultado de count(matricula)
-		if($_SESSION['validar'] == 0){
-			$_SESSION['estatus'] = 0;
+		/* Revisar
+		// agregar la condición pára verificar que el usuario no está registrado
+		$sqlquery = "SELECT count(IDUsuario) as numero FROM visitas WHERE IDUsuario like '$_SESSION[matricula]' && status = 0";
+		$sql3 = mysqli_query( $mysqli, $sqlquery );
+		$contando= $sql3->fetch_assoc();
+		$_SESSION['validar']=$contando['numero'];
+		if($_SESSION['validar']==0){
+			$_SESSION['estatus']=0;
 			header("Location:servicio.php"); 
 			exit;
-		}else if($_SESSION['validar'] == 1){
+		}
+		if($_SESSION['validar']==1){
 			$mysqli->set_charset("utf8");
 			date_default_timezone_set('America/Mexico_City');
-			$hoy = date("Y-m-d H:i:s", time());//Format para y fecha y hora
-			$query = "UPDATE reg_visitas SET estatus = 1, FechaSalida = '$hoy' WHERE matricula like '$_SESSION[matricula]' && estatus = 0";
-			mysqli_query( $mysqli, $query );
+			$hoy= date("Y-m-d H:i:s");
+			  mysqli_query($mysqli,"UPDATE visitas SET status=1, FechaSalida='$hoy' WHERE IDUsuario like '$_SESSION[matricula]' && status = 0 ");
 			$_SESSION['mensaje']="Salida registrada, vuelve pronto a BCU <br/><br/>";
 			header("Location: error.php");
 			exit;//acuerdate de esta linea please			
 		}
-		
+		*/
 	}else{
 		$_SESSION['mensaje']='Verifica los datos';
 		header("Location: error.php"); 
