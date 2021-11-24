@@ -2,8 +2,9 @@
 <html>
 	<head>
 		<title>Selecciona servicios</title>
-		<link rel="stylesheet" type="text/css" href="css/bcu.css">
-		<link rel="icon" type="image/png" href="favicon.ico" />
+		<script src="./js/functions.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/bibli.css">
+		<link rel="icon" type="image/png" href="images/favicon.ico" />
 	</head>
 
 	<body>
@@ -32,7 +33,6 @@
 						echo '<br/>';
 						echo 'ID PE: ' . $_SESSION['proedu'];
 						echo '<br/>';
-						/* echo 'Estatus: ' . $_SESSION['estatus'];*/
 						echo '<br/>';
 					?></h3>
 
@@ -42,7 +42,7 @@
 							<table style="margin:5px auto 0px auto; width:700 px; text-align:justify;">
 								<tr>
 									<th>
-										<li><input type="checkbox" name="checkbox[]" value="Sala" placeholder="Selecciona el tipo de servicio requerido">Consulta en sala<br></li>
+										<li><label><input type="checkbox" name="checkbox[]" value="Sala" placeholder="Selecciona el tipo de servicio requerido">Consulta en sala<label><br></li>
 									</th>
 									<th>
 										<li><input type="checkbox" name="checkbox[]" value="Domicilio" placeholder="Selecciona el tipo de servicio requerido">Préstamo a domicilio<br></li>
@@ -122,15 +122,15 @@
 		<div class="footer">
 			<table>
 				<tr>
-						<th class="logo">
-						</th>
+					<th class="logo">
+					</th>
 
-						<th class="txt">
-							Universidad Autónoma del Estado de Morelos Av. Universidad 1001. Col. Chamilpa. Cuernavaca, Morelos. C. P. 62209.
-						</th>
+					<th class="txt">
+						Universidad Autónoma del Estado de Morelos Av. Universidad 1001. Col. Chamilpa. Cuernavaca, Morelos. C. P. 62209.
+					</th>
 
-						<th class="logo">
-						</th>
+					<th class="logo">
+					</th>
 				</tr>
 		   </table>
 		</div>

@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<link rel="stylesheet" type="text/css" href="css/bibli.css"> 
-		<link rel="icon" type="image/png" href="images/favicon.ico" />
 		<title>Registro BCU</title>
+		<script src="./js/functions.js"></script>
+		<!-- <link rel="stylesheet" type="text/css" href="css/bibli.css">  -->
+		<link rel="icon" type="image/png" href="images/favicon.ico" />
 	</head>
 	
 	<body>
@@ -33,17 +34,11 @@
 					<h4>
 						Escanea tu código de usuario
 					</h4>
-					<input type="txt" name="user" autofocus required="required" onKeyUp="this.value = this.value.toUpperCase();" placeholder="Escanea o digita tu número de usuario" >
+					<input type="txt" name="user" autofocus required="required" onKeyUp="ConvertirMayusculas(this)" placeholder="Escanea o digita tu número de usuario" >
 					<input type="submit" class="submit" value="Registrar" />
 				</div>
 			</form>
-			<br/>
-			<br/>
-			<!--
-			<div class="linkexterno">
-				<a href="externo.php">si eres usario externo</a>
-			</div>
-			-->
+			<br/><br/>
 		</div>
 
 		<div class="footer">
@@ -57,9 +52,9 @@
 							Universidad Autónoma del Estado de Morelos Av. Universidad 1001. Col. Chamilpa. Cuernavaca, Morelos. C. P. 62209. 
 						</th>
 						
-						<th class="logof">
+						<!-- <th class="logof">
 						   <a href="login.php"> <img id="login" src="images/key.png" /> </a>
-						</th>
+						</th>-->
 					 </tr>
 			   
 		   </table>   
