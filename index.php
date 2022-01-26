@@ -3,7 +3,7 @@
 	<head>
 		<title>Registro BCU</title>
 		<script src="./js/functions.js"></script>
-		<!-- <link rel="stylesheet" type="text/css" href="css/bibli.css">  -->
+		<link rel="stylesheet" type="text/css" href="css/bibli.css">
 		<link rel="icon" type="image/png" href="images/favicon.ico" />
 	</head>
 	
@@ -12,20 +12,25 @@
 		<div class="header">
 			<table>
 				<tr>
-					<th class="logo"><img src="images/uaem.png" width="100"  alt="UAEM" title="UAEM" /></th>
+					<th class="logo">
+						<a href="index.php"><img src="images/uaem.png" width="100" alt="UAEM" title="UAEM" /></a>
+					</th>
 					<th class="txt">Universidad Autónoma del Estado de Morelos <br />
 					   Dirección de Desarrollo de Bibliotecas <br />
-					   Biblioteca Central Universitaria <br /></th>
-					<th class="logo"><img src="images/bcu.png" width="100"  alt="BCU" title="BCU" /></th>
+					   Biblioteca Central Universitaria <br />
+					</th>
+					<th class="logo">
+						<img src="images/bcu.png" width="100"  alt="BCU" title="BCU" />
+					</th>
 				</tr>
 			</table>
 		</div>
 		
 		<div class="clearfix">
 			<form id="formulario" action="proceso.php" method="post">
-				<div class=" content">
+				<div class="content">
 					<h2>
-						Bienvenido/a a la Biblioteca Central Universitaria
+						Bienvenido(a) a la Biblioteca Central Universitaria
 					</h2>
 					<h3>
 						Para acceder a las instalaciones y servicios, es necesario que registres tu entrada.

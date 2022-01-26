@@ -41,55 +41,15 @@
 										<li><label><input type="checkbox" name="checkbox[]" value="Sala" placeholder="Selecciona el tipo de servicio requerido">Consulta en sala<label><br></li>
 									</th>
 									<th>
-										<li><input type="checkbox" name="checkbox[]" value="Domicilio" placeholder="Selecciona el tipo de servicio requerido">Préstamo a domicilio<br></li>
-									</th>
-									<th>
-										<li><input type="checkbox" name="checkbox[]" value="Inter" placeholder="Selecciona el tipo de servicio requerido">Préstamo interbibliotecario<br></li>
-									</th>
-								</tr>
-
-								<tr>
-									<th>
 										<li><input type="checkbox" name="checkbox[]" value="Referencia" placeholder="Selecciona el tipo de servicio requerido">Referencia y asesoría<br></li>
 									</th>
 									<th>
 										<li><input type="checkbox" name="checkbox[]" value="BaseDatos" placeholder="Selecciona el tipo de servicio requerido">Consulta de Base de Datos<br></li>
 									</th>
+								</tr>
+								<tr>
 									<th>
 										<li><input type="checkbox" name="checkbox[]" value="Tesiteca" placeholder="Selecciona el tipo de servicio requerido">Tesiteca<br></li>
-									</th>
-								</tr>
-								<tr>
-									<th>
-										<li><input type="checkbox" name="checkbox[]" value="Cubiculo" placeholder="Selecciona el tipo de servicio requerido">Cubículo de estudio<br></li>
-									</th>
-									<th >
-										<li><input type="checkbox" name="checkbox[]" value="Videoteca" placeholder="Selecciona el tipo de servicio requerido">Videoteca<br></li>
-									</th>
-									<th>
-										<li><input type="checkbox" name="checkbox[]" value="Computo" placeholder="Selecciona el tipo de servicio requerido">Uso de computadora<br></li>
-									</th>
-								</tr>
-								<tr>
-									<th>
-										<li><input type="checkbox" name="checkbox[]" value="Noadeudo" placeholder="Selecciona el tipo de servicio requerido">Expedición de constancias<br></li>
-									</th>
-									<th>
-										<li><input type="checkbox" name="checkbox[]" value="Auditorio" placeholder="Selecciona el tipo de servicio requerido">Auditorio<br></li>
-									</th>
-									<th>
-										<li><input type="checkbox" name="checkbox[]" value="SUM" placeholder="Selecciona el tipo de servicio requerido">Sala de usos múltiples<br></li>
-									</th>
-								</tr>
-								<tr>
-									<th>
-										<li><input type="checkbox" name="checkbox[]" value="Tesis" placeholder="Selecciona el tipo de servicio requerido">Recepción de tesis<br></li>
-									</th>
-									<th>
-										<li><input type="checkbox" name="checkbox[]" value="Guiadas" placeholder="Selecciona el tipo de servicio requerido">Visitas guiadas<br></li>
-									</th>
-									<th>
-										<li><input type="checkbox" name="checkbox[]" value="Otro" placeholder="Selecciona el tipo de servicio requerido">Otro<br></li>
 									</th>
 								</tr>
 							</table>
