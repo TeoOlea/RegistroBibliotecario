@@ -1,0 +1,37 @@
+SELECT matricula FROM reg_visitas WHERE YEAR(FechaEntrada) = 2021 AND MONTH(FechaEntrada) = 12 AND DAY(FechaEntrada) = 07;
+
+SELECT * FROM usuariosbibli WHERE (matricula ='U123' OR codigobarra = 'U123');
+
+SELECT idpe INTO @prog FROM usuariosbibli WHERE (matricula ='U123' OR codigobarra = 'U123');
+
+SELECT * FROM programedu WHERE IDprogramedu = 18;
+
+SELECT COUNT(Day(FechaEntrada)) AS cuenta from reg_visitas WHERE YEAR(FechaEntrada) = 2021 AND MONTH(FechaEntrada) = 12 AND DAY(FechaEntrada) = 07;
+
+SELECT * FROM reg_visitas WHERE YEAR(FechaEntrada) = 2021 AND MONTH(FechaEntrada) = 12 AND DAY(FechaEntrada) = 07 ORDER BY time(FechaEntrada) ASC;
+
+SELECT nom_programedu, COUNT(reg_visitas.matricula) as Afluencia
+FROM reg_visitas, programedu, usuariosbibli
+WHERE usuariosbibli.matricula = reg_visitas.matricula
+AND usuariosbibli.idpe = programedu.IDprogramedu
+AND YEAR(FechaEntrada) = 2021 AND MONTH(FechaEntrada) = 12 AND DAY(FechaEntrada) = 07
+ORDER BY nom_programedu;
+
+SELECT *
+FROM reg_visitas, programedu, usuariosbibli
+WHERE (reg_visitas.matricula = usuariosbibli.matricula OR reg_visitas.matricula = usuariosbibli.codigobarra)
+AND usuariosbibli.idpe = programedu.IDprogramedu
+AND YEAR(FechaEntrada) = 2021 AND MONTH(FechaEntrada) = 12 AND DAY(FechaEntrada) = 07
+ORDER BY MONTH(FechaEntrada) ASC;
+
+SELECT nom_programedu, COUNT(reg_visitas.matricula) as Afluencia
+FROM reg_visitas, programedu, usuariosbibli
+WHERE (reg_visitas.matricula = usuariosbibli.matricula OR reg_visitas.matricula = usuariosbibli.codigobarra)
+AND usuariosbibli.idpe = programedu.IDprogramedu
+AND YEAR(FechaEntrada) = 2021 AND MONTH(FechaEntrada) = 12 AND DAY(FechaEntrada) = 07
+ORDER BY nom_programedu;
+
+INSERT INTO reg_visitas (matricula, servicios, estatus, FechaEntrada) VALUES( '00001', 'Inter.Domicilio.Sala.', '0','2022-01-01 13:00:00');
+UPDATE reg_visitas SET estatus = 1, FechaSalida = '2022-01-01 14:00:00' WHERE matricula like '00001' && estatus = 0;
+
+ALTER TABLE `reg_visitas` ADD FULLTEXT(`servicios`);

@@ -18,7 +18,7 @@
 					<th class="txt">
 						Universidad Autónoma del Estado de Morelos <br/>
 						Dirección de Desarrollo de Bibliotecas <br/>
-						Biblioteca Centrla Universitaria <br/>
+						Biblioteca Central Universitaria <br/>
 					</th>
 					<th>
 						<img src="images/bcu.png" width="100"  alt="BCU" title="BCU" />

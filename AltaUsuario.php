@@ -65,11 +65,11 @@
 			//Definimos que si el usuario metió un codigo de barras para darse de alta, se guarde en el campo correcto
 			if( strpos( $matricula, "U" ) === 0 ){
 				$sqlquery1 = "INSERT INTO usuariosbibli(matricula, codigobarra, `nombre(s)`, apellidos, idtipo, id_uni_acad, idpe, nivel, email, sexo) VALUES
-					( 'NULL', '$matricula', '$nombre', '$apellidos', '$idTipo', '$idUni_Acad', '$idProg_Edu', '$nivelProgramaEducativo', '$email', '$genero')";
+					( NULL, '$matricula', '$nombre', '$apellidos', '$idTipo', '$idUni_Acad', '$idProg_Edu', '$nivelProgramaEducativo', '$email', '$genero')";
 					//echo "<br/> $sqlquery1<br/> entro en codigo de barras";
 			}else{//Segmento de código dará de alta al usuario con una matricula
 				$sqlquery1 = "INSERT INTO usuariosbibli(matricula, codigobarra, `nombre(s)`, apellidos, idtipo, id_uni_acad, idpe, nivel, email, sexo) VALUES
-					( '$matricula', 'NULL', '$nombre', '$apellidos', '$idTipo', '$idUni_Acad', '$idProg_Edu', '$nivelProgramaEducativo', '$email', '$genero')";
+					( '$matricula', NULL, '$nombre', '$apellidos', '$idTipo', '$idUni_Acad', '$idProg_Edu', '$nivelProgramaEducativo', '$email', '$genero')";
 			}
 			
 			if( !$query = $mysqli->query( $sqlquery1 ) ){

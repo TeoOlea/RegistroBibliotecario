@@ -94,13 +94,28 @@
 						<dt><label id="text_comment" class="exito" hidden>El usuario está disponible</label></dt>
 					</dl>
 				</li>
+				<!--
+					/^[A-Z]+$/i
+					
+					Donde:
+
+					^ indica que el patrón debe iniciar con los caracteres dentro de los corchetes
+
+					[A-Z] indica que los caracteres admitidos son letras del alfabeto
+
+					+ indica que los caracteres dentro de los corchetes se pueden repetir
+
+					$ indica que el patrón finaliza con los caracteres que están dentro de los corchetes.
+
+					i indica que validaremos letras mayúsculas y minúsculas (case-insensitive)
+				-->
 				<li>
 					<label for="nombre"> Nombre(s): </label>
-					<input type="text" name="nombre" required onKeyUp="ConvertirMayusculas(this)" placeholder="Digita tu(s) nombre(s)" autocomplete="off" >
+					<input type="text" id="nombre" name="nombre" required onKeyUp="ConvertirMayusculas(this)" placeholder="Digita tu(s) nombre(s)" autocomplete="off" pattern="[A-Za-zÁÉÍÓÚÑáéíóúñ ]+$" title="Sólo letras" >
 				</li>
 				<li>
 					<label for="apes"> Apellidos: </label>
-					<input type="text" name="apes" required onKeyUp="ConvertirMayusculas(this)" placeholder="Digita tus apellidos" autocomplete="off" >
+					<input type="text" id="nombre" name="apes" required onKeyUp="ConvertirMayusculas(this)" placeholder="Digita tus apellidos" autocomplete="off" pattern="[A-Za-zÁÉÍÓÚÑáéíóúñ ]+$" title="Sólo letras" >
 				</li>
 				<!-- ----------------------------------------------------------------------- -->
 				<!-- --------------Agregaremos los nuevos campos para el registro inicial con QR--------------------------------------------------------- -->
@@ -147,8 +162,8 @@
 				</li>
 				<li>
 					<label for="genero">Género: </label>
-					<label><input type="radio" name="genero" value="F" required placeholder="Selecciona tu género"> Femenino </label>
-					<label><input type="radio" name="genero" value="M" placeholder="Selecciona tu género">Masculino </label>
+					<label><input type="radio" name="genero" value="hombre" required placeholder="Selecciona tu género">Hombre  </label>
+					<label><input type="radio" name="genero" value="mujer" placeholder="Selecciona tu género">Mujer</label>
 				</li>
 				<li>
 					<label for="email">Correo electrónico: </label>

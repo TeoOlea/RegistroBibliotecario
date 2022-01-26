@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<script src="./js/functions.js"></script>
-		<link rel="stylesheet" type="text/css" href="css/bibli.css"> 
-		<link rel="icon" type="image/png" href="images/favicon.ico" />
-		<meta charset="utf-8">
 		<title>Alta de usuario externo</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="css/bibli.css"> 
+		<script src = "js/functions.js"></script>
+		<link rel="icon" type="image/png" href="images/favicon.ico" />
 	</head>
 	
 	<body>
@@ -21,9 +21,29 @@
 				</tr>
 			</table>
 		</div>
+		
+		<?php 
+			session_start();
+			include('conexion.php');
+			$mysqli =new mysqli ($host,$user,$pw, $db);
+			$mysqli->set_charset("utf8");
+			
+			//Cargamos los usuarios dados de alta en la base de datos
+			$sqlquery0 = "SELECT `matricula` FROM usuariosbibli WHERE `matricula` != '' AND `matricula` IS NOT NULL";
+			$query = $mysqli->query( $sqlquery0 );
+			//
+			$arreglo_matricula = [];
+			$index_arrmat = 0;
+			while( $columna_matricula = mysqli_fetch_array($query) ){
+				//echo $columna_matricula['matricula']."<br/>";
+				$arreglo_matricula[$index_arrmat] = $columna_matricula['matricula'];
+				$index_arrmat++;
+			}
+		?>
 
 		<div class="clearfix">
 			<div class=" content">
+			<!-- De las opciones de los submit mandamos la opción a DefOpcionForm para elegir que hacer despues -->
 			<form class="contact_form" name="contact_form" id="contact_form" action="DefOpcionForm.php" method="post" >
 			<ul>
 				<li>
@@ -36,16 +56,21 @@
 					</p>
 				</li>
 				<li>
-					<label for="curp">CURP o RFC </label>
-					<input type="text" name="curp" required="required" autofocus onKeyUp="ConvertirMayusculas(this)" placeholder="Digita tu CURP en mayúsculas" >
+					<dl>
+						<dd>
+							<label for="curp">CURP o RFC </label>
+							<input type="text" id="curp" name="curp" autocomplete="off" required maxlength="18" placeholder="Digita tu CURP" onKeyUp='ValidarCURP(this, <?php echo json_encode( $arreglo_matricula ); ?>)'  >
+						</dd>
+						<dt><label id="text_comment" class="exito" hidden>El usuario está disponible</label></dt>
+					</dl>
 				</li>
 				<li>
 					<label for="nombre"> Nombre/s: </label>
-					<input type="text" name="nombre" required="required" onKeyUp="ConvertirMayusculas(this)" placeholder="Digita tu nombre/s" >
+					<input type="text" name="nombre" required="required" autocomplete="off" onKeyUp="ConvertirMayusculas(this)" placeholder="Digita tu nombre/s" pattern="[A-Za-zÁÉÍÓÚÑáéíóúñ ]+$" >
 				</li>
 				<li>
 					<label for="apes"> Apellidos: </label>
-					<input type="text" name="apes"  required="required" onKeyUp="ConvertirMayusculas(this)" placeholder="Digita tus apellidos" >
+					<input type="text" name="apes"  required="required" autocomplete="off" onKeyUp="ConvertirMayusculas(this)" placeholder="Digita tus apellidos" pattern="[A-Za-zÁÉÍÓÚÑáéíóúñ ]+$" >
 				</li>
 				<li>
 					<label for="ExtTipo"> Tipo usuario: </label>
@@ -58,8 +83,8 @@
 					</select>
 				</li>
 					<label for="genero">Género: </label>
-					<label><input type="radio" name="genero" value="F" required placeholder="Selecciona tu género"> Femenino </label>
-					<label><input type="radio" name="genero" value="M" placeholder="Selecciona tu género">Masculino </label>
+					<label><input type="radio" name="genero" value="hombre" required placeholder="Selecciona tu género">Hombre  </label>
+					<label><input type="radio" name="genero" value="mujer" placeholder="Selecciona tu género">Mujer</label>
 				</li>
 				<li>
 					<label for="email">Correo electrónico: </label>
