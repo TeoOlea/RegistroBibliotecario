@@ -34,7 +34,7 @@
 		$_SESSION['curp'] = $_POST['curp'];
 		$_SESSION['nombre'] = $_POST['nombre'];
 		$_SESSION['apes'] = $_POST['apes'];
-		$_SESSION['usu_ext'] = "5";
+		$_SESSION['usu_ext'] = "7";
 		$_SESSION['ExtTipo'] = $_POST['ExtTipo'];
 		$_SESSION['genero'] = $_POST['genero'];
 		$_SESSION['email'] = $_POST['email'];

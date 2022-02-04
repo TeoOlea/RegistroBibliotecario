@@ -37,7 +37,7 @@
 				</ul>
 			</div>
 		</div>
-		
+		<!--
 		<center>
 		<a href="#" onclick="window.top.close(); return false;">close A</a>
 		<br/>
@@ -54,7 +54,7 @@
 		<button class="closeButton" style="cursor: pointer" onclick="window.close();">Close Window</button>
 		<br/>
 		</center>
-		
+		-->
 		<div>
 			<br />
 			<?php
