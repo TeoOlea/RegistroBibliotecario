@@ -34,14 +34,14 @@
 						Bienvenido(a) a la Biblioteca Central Universitaria
 					</h2>
 					<h3>
-						Para acceder a las instalaciones y servicios, es necesario que registres tu entrada.
+						Para acceder a las instalaciones y servicios, es necesario que registres tu entrada y salida.
 					</h3>
 					<br/>
 					<h4>
-						Escanea tu código de usuario
+						Escanea tu código de usuario o matrícula
 					</h4>
 					<input type="txt" name="user" autofocus required="required" onKeyUp="ConvertirMayusculas(this)" placeholder="Escanea o digita tu número de usuario" >
-					<input type="submit" class="submit" value="Registrar" />
+					<input type="submit" class="submit" value="Enviar" />
 				</div>
 			</form>
 			<br/><br/>

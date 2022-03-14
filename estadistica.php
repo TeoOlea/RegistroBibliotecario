@@ -10,7 +10,7 @@
 		<div class="header">
 			<table>
 					<tr>
-						<th class="logo"><img src="images/uaem.png" width="100"  alt="UAEM" title="UAEM" /></th>
+						<th class="logo"><a href="index.php"><img src="images/uaem.png" width="100"  alt="UAEM" title="UAEM" /></th>
 						<th class="txt">
 							Universidad Autónoma del Estado de Morelos <br />
 							Dirección de Desarrollo de Bibliotecas <br/>

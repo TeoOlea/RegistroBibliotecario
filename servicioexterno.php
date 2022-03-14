@@ -11,7 +11,7 @@
 		<div class="header">
 			<table>
 				<tr>
-					<th class="logo"><img src="images/uaem.png" width="100"  alt="UAEM" title="UAEM" /></th>
+					<th class="logo"><a href="index.php"><img src="images/uaem.png" width="100"  alt="UAEM" title="UAEM" /></th>
 					<th class="txt">Universidad Autónoma del Estado de Morelos <br />
 						Dirección de Desarrollo de Bibliotecas <br />
 						Biblioteca Central Universitaria <br /></th>
@@ -38,18 +38,18 @@
 							<table style="margin:5px auto 0px auto; width:700 px; text-align:justify;">
 								<tr>
 									<th>
-										<li><label><input type="checkbox" name="checkbox[]" value="Sala" placeholder="Selecciona el tipo de servicio requerido">Consulta en sala<label><br></li>
+										<li><label><input type="checkbox" name="checkbox[]" value="Sala" placeholder="Selecciona el tipo de servicio requerido">Consulta en sala</label><br></li>
 									</th>
 									<th>
-										<li><input type="checkbox" name="checkbox[]" value="Referencia" placeholder="Selecciona el tipo de servicio requerido">Referencia y asesoría<br></li>
+										<li><label><input type="checkbox" name="checkbox[]" value="Referencia" placeholder="Selecciona el tipo de servicio requerido">Referencia y asesoría</label><br></li>
 									</th>
 									<th>
-										<li><input type="checkbox" name="checkbox[]" value="BaseDatos" placeholder="Selecciona el tipo de servicio requerido">Consulta de Base de Datos<br></li>
+										<li><label><input type="checkbox" name="checkbox[]" value="BaseDatos" placeholder="Selecciona el tipo de servicio requerido">Consulta de Base de Datos</label><br></li>
 									</th>
 								</tr>
 								<tr>
 									<th>
-										<li><input type="checkbox" name="checkbox[]" value="Tesiteca" placeholder="Selecciona el tipo de servicio requerido">Tesiteca<br></li>
+										<li><label><input type="checkbox" name="checkbox[]" value="Tesiteca" placeholder="Selecciona el tipo de servicio requerido">Tesiteca</label><br></li>
 									</th>
 								</tr>
 							</table>
