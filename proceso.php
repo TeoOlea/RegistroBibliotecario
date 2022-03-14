@@ -72,7 +72,7 @@
 		$_SESSION['cargo'] = $puesto['tusuario'];
 		$_SESSION['tipo_usuario'] = $puesto['tusuario'];
 		
-		//echo '<script>alert("'.$_SESSION['tipo_usuario'].'");</script>';
+		echo '<script>alert("'.$_SESSION['tipo_usuario'].'");</script>';
 		
 		if( $_SESSION['tipo_usuario'] != "Externo" ){
 			//Buscamos que programa de estudios tiene
@@ -114,7 +114,7 @@
 			$query = "UPDATE reg_visitas SET estatus = 1, FechaSalida = '$hoy' WHERE matricula like '$_SESSION[matricula]' && estatus = 0";
 			mysqli_query( $mysqli, $query );
 			$_SESSION['mensaje']="Salida registrada, vuelve pronto a BCU <br/><br/>";
-			header("Location: error.php");
+			header("Location: salida.php");
 			exit;//acuerdate de esta linea please			
 		}
 	}else{
