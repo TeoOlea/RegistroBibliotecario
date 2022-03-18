@@ -13,7 +13,7 @@
 			<table>
 				<tr>
 					<th class="logo">
-						<a href="index.php"><img src="images/uaem.png" width="100" alt="UAEM" title="UAEM" /></a>
+						<a href="index.php"><img src="images/uaem.png" width="160" alt="UAEM" title="UAEM" /></a>
 					</th>
 					<th class="txt">
 						Universidad Autónoma del Estado de Morelos <br />
@@ -21,7 +21,7 @@
 						Biblioteca Central Universitaria <br />
 					</th>
 					<th class="logo">
-						<img src="images/bcu.png" width="100"  alt="BCU" title="BCU" />
+						<img src="images/bcu.png" width="160"  alt="BCU" title="BCU" />
 					</th>
 				</tr>
 			</table>
@@ -34,14 +34,14 @@
 						Bienvenido(a) a la Biblioteca Central Universitaria
 					</h2>
 					<h3>
-						Para acceder a las instalaciones y servicios, es necesario que registres tu entrada.
+						Para acceder a las instalaciones y servicios, es necesario que registres tu<br/>
 					</h3>
-					<br/>
+					<h2><u class="resaltar">ENTRADA</u> y <u class="resaltar">SALIDA</u></h2>
 					<h4>
-						Escanea tu código de usuario
+						Escanea tu código de usuario o matrícula
 					</h4>
-					<input type="txt" name="user" autofocus required="required" onKeyUp="ConvertirMayusculas(this)" placeholder="Escanea o digita tu número de usuario" >
-					<input type="submit" class="submit" value="Registrar" />
+					<input type="txt" class="input_reg" name="user" autofocus required="required" onKeyUp="ConvertirMayusculasSinEspacios(this)" placeholder="Escanea o digita tu número" >
+					<input type="submit" class="submit" value="Enviar" />
 				</div>
 			</form>
 			<br/><br/>
@@ -65,5 +65,6 @@
 			   
 		   </table>   
 		</div>
+		<div class="version">v 0.1</div>
 	</body>
 </html>

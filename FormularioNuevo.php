@@ -118,20 +118,6 @@
 						<input type="text" id="nombre" name="apes" required onKeyUp="ConvertirMayusculas(this)" placeholder="Digita tus apellidos" autocomplete="off" pattern="[A-Za-zÁÉÍÓÚÑáéíóúñ ]+$" title="Sólo letras" >
 					</li>
 					<!-- ----------------------------------------------------------------------- -->
-					<li>
-						<label>Tipo usuario: </label>
-						<select name="ExtTipo" required placeholder="Selecciona una de la opciones"> 
-							<option value="" selected>Seleccione:</option>
-							<?php
-								//echo '<script>alert("Hola Mundo");</script>';
-								$sqlquery1 = "SELECT * FROM tipousuario WHERE IDusuario != '7'";
-								$query = $mysqli->query($sqlquery1);
-								while( $tabla_programedu = mysqli_fetch_array($query) ){
-									echo "<option value='".$tabla_programedu['IDusuario']."'>".$tabla_programedu['tusuario']."</option>";
-								}
-							?>
-						</select>
-					</li>
 					<!-- --------------Agregaremos los nuevos campos para el registro inicial con QR--------------------------------------------------------- -->
 					<li>
 						<label>Unidad Académica: </label>
@@ -160,6 +146,20 @@
 						</select>
 					</li>
 					<!-- ----------------------------------------------------------------------- -->
+					<li>
+						<label>Tipo usuario: </label>
+						<select name="ExtTipo" required placeholder="Selecciona una de la opciones"> 
+							<option value="" selected>Seleccione:</option>
+							<?php
+								//echo '<script>alert("Hola Mundo");</script>';
+								$sqlquery1 = "SELECT * FROM tipousuario WHERE IDusuario != '7'";
+								$query = $mysqli->query($sqlquery1);
+								while( $tabla_programedu = mysqli_fetch_array($query) ){
+									echo "<option value='".$tabla_programedu['IDusuario']."'>".$tabla_programedu['tusuario']."</option>";
+								}
+							?>
+						</select>
+					</li>
 					<li>
 						<label for="genero">Género: </label>
 						&nbsp;

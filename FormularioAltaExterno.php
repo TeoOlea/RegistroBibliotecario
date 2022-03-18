@@ -12,12 +12,13 @@
 		<div class="header">
 			<table>
 				<tr>
-					<th class="logo"><img src="images/uaem.png" width="100"  alt="UAEM" title="UAEM" /></th>
-					<th class="txt">Universidad Autónoma del Estado de Morelos <br />
-					   Dirección de Desarrollo de Bibliotecas <br />
-					   Biblioteca Central Universitaria <br />
+					<th class="logo"><a href="index.php"><img src="images/uaem.png" width="160"  alt="UAEM" title="UAEM" /></th>
+					<th class="txt">
+						Universidad Autónoma del Estado de Morelos <br/>
+						Dirección de Desarrollo de Bibliotecas <br/>
+						Biblioteca Central Universitaria <br/>
 					</th>
-					<th class="logo"><img src="images/bcu.png" width="100"  alt="BCU" title="BCU" /></th>
+					<th class="logo"><img src="images/bcu.png" width="160" alt="BCU" title="BCU" /></th>
 				</tr>
 			</table>
 		</div>
@@ -58,7 +59,7 @@
 					<li>
 						<dl>
 							<dd>
-								<label for="curp">CURP o RFC </label>
+								<label for="curp">CURP, RFC o Teléfono</label>
 								<input type="text" id="curp" name="curp" autocomplete="off" required maxlength="18" placeholder="Digita tu CURP" onKeyUp='ValidarCURP(this, <?php echo json_encode( $arreglo_matricula ); ?>)'  >
 							</dd>
 							<dt><label id="text_comment" class="exito" hidden>El usuario está disponible</label></dt>

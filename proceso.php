@@ -14,8 +14,11 @@
     $mysqli =new mysqli ($host,$user,$pw, $db);
 	$mysqli->set_charset("utf8");
 	
-	//echo '<script>alert("'.$_SESSION['matricula'].'");</script>';
+	
+	
 	if( isset($_POST['user']) && !empty($_POST['user']) ){
+		
+		//echo '<script>alert("'.$_SESSION['matricula'].'");</script>';
 		
 		if( strpos( $_SESSION['matricula'], "U" ) === 0 ){
 			//Buscamos por codigo de barras
@@ -29,6 +32,7 @@
 		}else{
 			//Buscamos por matricula
 			$sql = "SELECT * FROM usuariosbibli WHERE matricula = '$_SESSION[matricula]'";
+			//echo '<script>alert("'.$sql.'");</script>';
 			if( !$resultado = $mysqli->query($sql) ){
 				// ¡Oh, no! La consulta falló. 
 				$_SESSION['mensaje']="Lo sentimos, este sitio web está experimentando problemas.";
@@ -51,14 +55,20 @@
 		$_SESSION['proedu'] = $usuarioencon['idpe'];
 		$_SESSION['genero'] = $usuarioencon['sexo'];
 		
+		//echo '<script>alert("'.$_SESSION['nombre'].'");</script>';
+		//echo '<script>alert("'.$_SESSION['proedu'].'");</script>';
+		//echo '<script>alert("'.$_SESSION['genero'].'");</script>';
+		
 		//Buscamos que tipo de usuario es
 		$sql1 = "SELECT tusuario FROM tipousuario WHERE IDusuario = '$usuarioencon[idtipo]'";
+		//echo '<script>alert("'.$sql1.'");</script>';
 		if( !$cargoen = $mysqli->query($sql1) ){
 			// ¡Oh, no! La consulta falló. 
 			$_SESSION['mensaje']="Lo sentimos, este sitio web está experimentando problemas.";
 			header("Location: error.php");
 			exit;
 		}
+		
 		if( $cargoen->num_rows === 0 ){
 			// ¡Oh, no hay filas! Unas veces es lo previsto, pero otras
 			// no. Nosotros decidimos. En este caso, ¿podría haber sido
@@ -72,7 +82,8 @@
 		$_SESSION['cargo'] = $puesto['tusuario'];
 		$_SESSION['tipo_usuario'] = $puesto['tusuario'];
 		
-		//echo '<script>alert("'.$_SESSION['tipo_usuario'].'");</script>';
+		//echo '<script>alert("'.$_SESSION['cargo'].'");</script>';
+		
 		
 		if( $_SESSION['tipo_usuario'] != "Externo" ){
 			//Buscamos que programa de estudios tiene
@@ -81,26 +92,35 @@
 			if ( !$cargope = $mysqli->query($sql2) ){
 				// ¡Oh, no! La consulta falló. 
 				$_SESSION['mensaje']="Lo sentimos, no se cuenta con el programa educativo que buscas.";
-				header("Location: error.php");
-				exit;
+				//echo '<script>alert("opcion final de error");</script>';
+				//header("Location: error.php");
+				//exit;
 			}
 			if ($cargope->num_rows === 0){
 				// ¡Oh, no hay filas! Unas veces es lo previsto, pero otras
 				// no. Nosotros decidimos. En este caso, ¿podría haber sido
 				// actor_id demasiado grande? 
 				$_SESSION['mensaje']="Lo sentimos. No se pudo encontrar una coincidencia para Programa educativo vigente con registro '$usuarioencon[idpe]'. Inténtelo de nuevo.";
-				header("Location: error.php");
-				exit;
+				//echo '<script>alert("error de numero de filas en cero");</script>';
+				//header("Location: error.php");
+				//exit;
 			}
+		}else{
+			//echo '<script>alert("dentro del if");</script>';
+			//echo '<script>alert("'.$_SESSION['tipo_usuario'].'");</script>';
 		}
 		
 		//Agregar la condición pára verificar que el usuario no está registrado
 		$query = "SELECT count(matricula) as numero FROM reg_visitas WHERE matricula like '$_SESSION[matricula]' && estatus = 0";
 		$sql3 = mysqli_query( $mysqli, $query );
+		//echo '<script>alert("'.$query.'");</script>';
 		$contando = mysqli_fetch_array($sql3);
+		//echo '<script>alert("'.$contando.'");</script>';
 		$_SESSION['validar']=$contando['numero'];//numero es el apodo al resultado de count(matricula)
+		//echo '<script>alert("'.$_SESSION['validar'].'");</script>';
 		if($_SESSION['validar'] == 0){
 			$_SESSION['estatus'] = 0;
+			echo '<script>alert("todo bien");</script>';
 			if( $_SESSION['tipo_usuario'] == "Externo" ){
 				header("Location:servicioexterno.php");
 			}else{
@@ -114,6 +134,10 @@
 			$query = "UPDATE reg_visitas SET estatus = 1, FechaSalida = '$hoy' WHERE matricula like '$_SESSION[matricula]' && estatus = 0";
 			mysqli_query( $mysqli, $query );
 			$_SESSION['mensaje']="Salida registrada, vuelve pronto a BCU <br/><br/>";
+			header("Location: salida.php");
+			exit;//acuerdate de esta linea please			
+		}else if($_SESSION['validar'] > 1){
+			$_SESSION['mensaje']="Registros multiples, favor de contactar al administrador.<br/><br/>";
 			header("Location: error.php");
 			exit;//acuerdate de esta linea please			
 		}
