@@ -6,14 +6,14 @@
 		<link rel="stylesheet" type="text/css" href="css/bibli.css">
 		<link rel="icon" type="image/png" href="images/favicon.ico">
 	</head>
-	
+	<META HTTP-EQUIV="REFRESH" CONTENT="5;URL=index.php">
 	<body>
 		<!-- --------Encabezado------------------ -->
 		<div class="header">
 			<table>
 				<tr>
 					<th class="logo">
-						<img src="images/uaem.png" width="100"  alt="UAEM" title="UAEM"/>
+						<a href="index.php"><img src="images/uaem.png" width="160"  alt="UAEM" title="UAEM"/>
 					</th>
 					<th class="txt">
 						Universidad Autónoma del Estado de Morelos <br/>
@@ -21,7 +21,7 @@
 						Biblioteca Central Universitaria <br/>
 					</th>
 					<th>
-						<img src="images/bcu.png" width="100"  alt="BCU" title="BCU" />
+						<img src="images/bcu.png" width="160"  alt="BCU" title="BCU" />
 					</th>
 				</tr>
 			</table>
@@ -56,7 +56,11 @@
 							mysqli_query( $mysqli, $sql1 );		       
 							echo 'Se han registrado los siguientes servicios';
 							echo '<p> <b>';
-							echo $servicio;
+							//echo $servicio;
+							$stringSeparado = explode(".", $servicio);
+							for( $i = 0; $i<count($stringSeparado); $i++ ){
+								echo $stringSeparado[$i]."<br>";
+							}
 							echo '</b></p>';
 							$mysqli->close();//cerrar la sesión, es importante realizar este proceso después de cada sesion, por ello se guardan en las variables. azul 020718
 						}

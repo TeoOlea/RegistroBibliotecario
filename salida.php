@@ -5,7 +5,7 @@
 		<link rel="icon" type="image/png" href="favicon.ico" />
 		<title>ERROR</title>
 	</head>
-	<META HTTP-EQUIV="REFRESH" CONTENT="10;URL=index.php">
+	<META HTTP-EQUIV="REFRESH" CONTENT="2;URL=index.php">
 	<body>
 		<div class="header">
 			<table>
