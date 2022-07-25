@@ -107,9 +107,5 @@
 				</tr>
 			</table>
 		</div>
-		<audio autoplay>
-			<source src="music/acierto.mp3">
-			Tu navegador no es compatible con el audio en HTML5
-		</audio>
 	</body>
 </html>

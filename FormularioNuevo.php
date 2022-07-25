@@ -73,7 +73,7 @@
 		<div class="clearfix">
 			<div class=" content">
 			<!-- De las opciones de los submit mandamos la opción a DefOpcionForm para elegir que hacer despues -->
-				<form class="contact_form" name="contact_form" id="contact_form" action="DefOpcionForm.php" method="post">
+				<form class="contact_form" name="contact_form" id="contact_form" action="DefOpcionForm.php" method="post" >
 					<div class="encabezado">
 						<h2>Alta de usuario</h2>
 						<br/>
@@ -96,36 +96,28 @@
 					</li>
 					<!--
 						/^[A-Z]+$/i
+						
 						Donde:
+
 						^ indica que el patrón debe iniciar con los caracteres dentro de los corchetes
+
 						[A-Z] indica que los caracteres admitidos son letras del alfabeto
+
 						+ indica que los caracteres dentro de los corchetes se pueden repetir
+
 						$ indica que el patrón finaliza con los caracteres que están dentro de los corchetes.
+
 						i indica que validaremos letras mayúsculas y minúsculas (case-insensitive)
 					-->
 					<li>
 						<label for="nombre"> Nombre(s): </label>
-						<input type="text" id="nombre" name="nombre" required onKeyUp="ConvertirMayusculas(this)" placeholder="Digita tu(s) nombre(s)" autocomplete="off" pattern="[A-Za-zÁÉÍÓÚÑáéíóúñ\. ]+$" title="Sólo letras" >
+						<input type="text" id="nombre" name="nombre" required onKeyUp="ConvertirMayusculas(this)" placeholder="Digita tu(s) nombre(s)" autocomplete="off" pattern="[A-Za-zÁÉÍÓÚÑáéíóúñ ]+$" title="Sólo letras" >
 					</li>
 					<li>
 						<label for="apes"> Apellidos: </label>
 						<input type="text" id="nombre" name="apes" required onKeyUp="ConvertirMayusculas(this)" placeholder="Digita tus apellidos" autocomplete="off" pattern="[A-Za-zÁÉÍÓÚÑáéíóúñ ]+$" title="Sólo letras" >
 					</li>
 					<!-- ----------------------------------------------------------------------- -->
-					<li>
-						<label>Tipo usuario: </label>
-						<select name="ExtTipo" required placeholder="Selecciona una de la opciones"> 
-							<option value="" selected>Seleccione:</option>
-							<?php
-								//echo '<script>alert("Hola Mundo");</script>';
-								$sqlquery1 = "SELECT * FROM tipousuario WHERE IDusuario != '7'";
-								$query = $mysqli->query($sqlquery1);
-								while( $tabla_programedu = mysqli_fetch_array($query) ){
-									echo "<option value='".$tabla_programedu['IDusuario']."'>".$tabla_programedu['tusuario']."</option>";
-								}
-							?>
-						</select>
-					</li>
 					<!-- --------------Agregaremos los nuevos campos para el registro inicial con QR--------------------------------------------------------- -->
 					<li>
 						<label>Unidad Académica: </label>
@@ -155,6 +147,20 @@
 					</li>
 					<!-- ----------------------------------------------------------------------- -->
 					<li>
+						<label>Tipo usuario: </label>
+						<select name="ExtTipo" required placeholder="Selecciona una de la opciones"> 
+							<option value="" selected>Seleccione:</option>
+							<?php
+								//echo '<script>alert("Hola Mundo");</script>';
+								$sqlquery1 = "SELECT * FROM tipousuario WHERE IDusuario != '7'";
+								$query = $mysqli->query($sqlquery1);
+								while( $tabla_programedu = mysqli_fetch_array($query) ){
+									echo "<option value='".$tabla_programedu['IDusuario']."'>".$tabla_programedu['tusuario']."</option>";
+								}
+							?>
+						</select>
+					</li>
+					<li>
 						<label for="genero">Género: </label>
 						&nbsp;
 						<label class="ratio_appearance"><input type="radio" name="genero" value="Hombre" required placeholder="Selecciona tu género">Hombre  </label>
@@ -169,9 +175,9 @@
 					</ul>
 					<br/>
 					<input type="hidden" value="Opcion" id="OpcionElegida" name="OpcionElegida" />
-					<input type="submit" value="Dar de alta" id="evento_alta" class="evento_alta_gris" name="evento_alta" disabled />
+					<input type="submit" value="Dar de alta" id="evento_alta" class="evento_alta_gris" name="evento_alta" onclick="ValidarRequired()" disabled />
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<input type="submit" value="Cancelar" id="evento_cancelar" class="evento_cancelar" name="evento_cancelar" />
+					<input type="submit" value="Cancelar" id="evento_cancelar" class="evento_cancelar" name="evento_cancelar" onclick="NoValidarRequired()" />
 				</form>
 				<!-- Ejemplo de un formulario con varios botones Teo 22/10/2021
 				<form action="DefOpcionForm.php" name="form1" id="form1" method="post">

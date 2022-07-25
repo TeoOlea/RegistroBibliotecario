@@ -5,7 +5,7 @@
 		<link rel="icon" type="image/png" href="favicon.ico" />
 		<title>ERROR</title>
 	</head>
-	<META HTTP-EQUIV="REFRESH" CONTENT="10;URL=index.php">
+	<META HTTP-EQUIV="REFRESH" CONTENT="2;URL=index.php">
 	<body>
 		<div class="header">
 			<table>
@@ -35,25 +35,24 @@
 			?>
 		</p>
 	</div>
-	
+		<!-- ---------Pie de pagina----------------- -->
 		<div class="footer">
 			<table>
 				<tr>
 					<th class="logo">
-					
+						
 					</th>
-							
 					<th class="txt">
-						Universidad Autónoma del Estado de Morelos Av. Universidad 1001. Col. Chamilpa. Cuernavaca, Morelos. C. P. 62209. 
+						Universidad Autónoma del Estado de Morelos Av. Universidad 1001. Col. Chamilpa. Cuernavaca, Morelos. C. P. 62209.
 					</th>
-							
 					<th class="logo">
+						
 					</th>
 				</tr>
-			</table>   
+			</table>
 		</div>
 		<audio autoplay>
-			<source src="music/error.mp3">
+			<source src="music/acierto.mp3">
 			Tu navegador no es compatible con el audio en HTML5
 		</audio>
 	</body>

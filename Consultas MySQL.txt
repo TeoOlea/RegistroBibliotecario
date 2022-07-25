@@ -1,37 +1,179 @@
-SELECT matricula FROM reg_visitas WHERE YEAR(FechaEntrada) = 2021 AND MONTH(FechaEntrada) = 12 AND DAY(FechaEntrada) = 07;
+Consultas MySQL
 
-SELECT * FROM usuariosbibli WHERE (matricula ='U123' OR codigobarra = 'U123');
-
-SELECT idpe INTO @prog FROM usuariosbibli WHERE (matricula ='U123' OR codigobarra = 'U123');
-
-SELECT * FROM programedu WHERE IDprogramedu = 18;
-
-SELECT COUNT(Day(FechaEntrada)) AS cuenta from reg_visitas WHERE YEAR(FechaEntrada) = 2021 AND MONTH(FechaEntrada) = 12 AND DAY(FechaEntrada) = 07;
-
-SELECT * FROM reg_visitas WHERE YEAR(FechaEntrada) = 2021 AND MONTH(FechaEntrada) = 12 AND DAY(FechaEntrada) = 07 ORDER BY time(FechaEntrada) ASC;
-
-SELECT nom_programedu, COUNT(reg_visitas.matricula) as Afluencia
-FROM reg_visitas, programedu, usuariosbibli
-WHERE usuariosbibli.matricula = reg_visitas.matricula
-AND usuariosbibli.idpe = programedu.IDprogramedu
-AND YEAR(FechaEntrada) = 2021 AND MONTH(FechaEntrada) = 12 AND DAY(FechaEntrada) = 07
-ORDER BY nom_programedu;
-
-SELECT *
-FROM reg_visitas, programedu, usuariosbibli
-WHERE (reg_visitas.matricula = usuariosbibli.matricula OR reg_visitas.matricula = usuariosbibli.codigobarra)
-AND usuariosbibli.idpe = programedu.IDprogramedu
-AND YEAR(FechaEntrada) = 2021 AND MONTH(FechaEntrada) = 12 AND DAY(FechaEntrada) = 07
-ORDER BY MONTH(FechaEntrada) ASC;
-
-SELECT nom_programedu, COUNT(reg_visitas.matricula) as Afluencia
-FROM reg_visitas, programedu, usuariosbibli
-WHERE (reg_visitas.matricula = usuariosbibli.matricula OR reg_visitas.matricula = usuariosbibli.codigobarra)
-AND usuariosbibli.idpe = programedu.IDprogramedu
-AND YEAR(FechaEntrada) = 2021 AND MONTH(FechaEntrada) = 12 AND DAY(FechaEntrada) = 07
-ORDER BY nom_programedu;
-
+Dar de alta a un usuario en el registro.
 INSERT INTO reg_visitas (matricula, servicios, estatus, FechaEntrada) VALUES( '00001', 'Inter.Domicilio.Sala.', '0','2022-01-01 13:00:00');
-UPDATE reg_visitas SET estatus = 1, FechaSalida = '2022-01-01 14:00:00' WHERE matricula like '00001' && estatus = 0;
+UPDATE reg_visitas SET estatus = 1, FechaSalida = '2022-01-01 14:00:00' WHERE matricula like '00001' && estatus = 0; 
 
-ALTER TABLE `reg_visitas` ADD FULLTEXT(`servicios`);
+¿Cuántas mujeres fueron X día?
+SELECT COUNT(usuariosbibli.sexo) as Mujeres FROM reg_visitas, usuariosbibli WHERE (reg_visitas.matricula = usuariosbibli.matricula OR reg_visitas.matricula = usuariosbibli.codigobarra) AND usuariosbibli.sexo = 'm' AND YEAR(FechaEntrada) = 2021 AND MONTH(FechaEntrada) = 12 AND DAY(FechaEntrada) = 01;
+
+¿Cuántas hombres fueron X día?
+SELECT COUNT(usuariosbibli.sexo) as Hombres FROM reg_visitas, usuariosbibli WHERE (reg_visitas.matricula = usuariosbibli.matricula OR reg_visitas.matricula = usuariosbibli.codigobarra) AND usuariosbibli.sexo = 'h' AND YEAR(FechaEntrada) = 2021 AND MONTH(FechaEntrada) = 12 AND DAY(FechaEntrada) = 01;
+
+¿Cuántos estudiantes fueron a la biblioteca X día?
+SELECT COUNT(reg_visitas.matricula) as Estudiantes FROM reg_visitas, usuariosbibli WHERE (reg_visitas.matricula = usuariosbibli.matricula OR reg_visitas.matricula = usuariosbibli.codigobarra) AND usuariosbibli.idtipo = '1' AND YEAR(FechaEntrada) = 2021 AND MONTH(FechaEntrada) = 12 AND DAY(FechaEntrada) = 01;
+
+¿Cuántos investigadores fueron a la biblioteca X día?
+SELECT COUNT(reg_visitas.matricula) as Investigadores FROM reg_visitas, usuariosbibli WHERE (reg_visitas.matricula = usuariosbibli.matricula OR reg_visitas.matricula = usuariosbibli.codigobarra) AND usuariosbibli.idtipo = '2' AND YEAR(FechaEntrada) = 2021 AND MONTH(FechaEntrada) = 12 AND DAY(FechaEntrada) = 01;
+
+ 
+¿Cuántos académicos fueron a la biblioteca X día?
+SELECT COUNT(reg_visitas.matricula) as Academicos FROM reg_visitas, usuariosbibli WHERE (reg_visitas.matricula = usuariosbibli.matricula OR reg_visitas.matricula = usuariosbibli.codigobarra) AND usuariosbibli.idtipo = '3' AND YEAR(FechaEntrada) = 2021 AND MONTH(FechaEntrada) = 12 AND DAY(FechaEntrada) = 01;
+
+¿Cuántos administrativos fueron a la biblioteca X día?
+SELECT COUNT(reg_visitas.matricula) as Administrativos FROM reg_visitas, usuariosbibli WHERE (reg_visitas.matricula = usuariosbibli.matricula OR reg_visitas.matricula = usuariosbibli.codigobarra) AND usuariosbibli.idtipo = '4' AND YEAR(FechaEntrada) = 2021 AND MONTH(FechaEntrada) = 12 AND DAY(FechaEntrada) = 01;
+
+¿Cuántos externos fueron a la biblioteca X día?
+SELECT COUNT(reg_visitas.matricula) as Administrativos FROM reg_visitas, usuariosbibli WHERE (reg_visitas.matricula = usuariosbibli.matricula OR reg_visitas.matricula = usuariosbibli.codigobarra) AND usuariosbibli.idtipo = '5' AND YEAR(FechaEntrada) = 2021 AND MONTH(FechaEntrada) = 12 AND DAY(FechaEntrada) = 01;
+
+¿Cuántos usuarios usaron el servicio de sala en la biblioteca X día?
+SELECT * FROM `reg_visitas` WHERE MATCH(`servicios`) AGAINST ('Sala') AND MONTH(FechaEntrada) = 12 AND DAY(FechaEntrada) = 01;
+
+¿Cuántos del programa educativo Y vinieron X día?
+SELECT nom_programedu, COUNT(nom_programedu) as Afluencia
+FROM reg_visitas, programedu, usuariosbibli
+WHERE (reg_visitas.matricula = usuariosbibli.matricula OR reg_visitas.matricula = usuariosbibli.codigobarra)
+AND usuariosbibli.idpe = programedu.IDprogramedu AND programedu.IDprogramedu = ‘Y’
+AND YEAR(FechaEntrada) = 2021 AND MONTH(FechaEntrada) = 12 AND DAY(FechaEntrada) = 01
+GROUP BY nom_programedu;
+
+Linea para agregar registros
+
+INSERT INTO reg_visitas (`matricula`, `servicios`, `estatus`, `FechaEntrada`, `FechaSalida`) VALUES( '123456789', 'Auditorio.Computo.Referencia.Domicilio.', '1','2022-02-08 10:54:18', '2022-02-08 14:00:18' );
+
+ 
+Pruebas
+
+SELECT `usuariosbibli`.`nombre(s)`, `usuariosbibli`.`idtipo`, `tipousuario`.`tusuario`, `programedu`.`nom_programedu`, `usuariosbibli`.`nivel`, `reg_visitas`.`servicios`, `reg_visitas`.`FechaEntrada`, `reg_visitas`.`FechaSalida` FROM usuariosbibli, tipousuario, usuariosbibli, reg_visitas WHERE 
+CASE `usuariosbibli`.`nivel`
+	WHEN "Posgrado" THEN "Interno"
+    WHEN "Medio Superior" THEN "Interno"
+    WHEN "Medio Superior" THEN "Interno"
+END AS "Tipo",
+
+
+SELECT COUNT(usuariosbibli.sexo) as Mujeres FROM reg_visitas, usuariosbibli WHERE (reg_visitas.matricula = usuariosbibli.matricula OR reg_visitas.matricula = usuariosbibli.codigobarra) AND usuariosbibli.sexo = 'Mujer' AND YEAR(FechaEntrada) = 2021 AND MONTH(FechaEntrada) = 12 AND DAY(FechaEntrada) = 01;
+
+SELECT usuariosbibli.`nombre(s)`, usuariosbibli.apellidos, usuariosbibli.idtipo, tipousuario.tusuario, programedu.nom_programedu, usuariosbibli.nivel, reg_visitas.servicios, reg_visitas.FechaEntrada, reg_visitas.FechaSalida FROM
+usuariosbibli, tipousuario, programedu, reg_visitas WHERE
+(reg_visitas.matricula = usuariosbibli.matricula OR reg_visitas.matricula = usuariosbibli.codigobarra) AND (usuariosbibli.idtipo = tipousuario.tusuario)
+ORDER BY reg_visitas.FechaEntrada;
+
+SELECT usuariosbibli.`nombre(s)`, usuariosbibli.apellidos, usuariosbibli.idtipo, tipousuario.tusuario, programedu.nom_programedu, usuariosbibli.nivel, reg_visitas.servicios, reg_visitas.FechaEntrada, reg_visitas.FechaSalida FROM usuariosbibli, tipousuario, programedu, reg_visitas WHERE (reg_visitas.matricula = usuariosbibli.matricula OR reg_visitas.matricula = usuariosbibli.codigobarra) AND usuariosbibli.idtipo = tipousuario.IDusuario AND (usuariosbibli.idpe = programedu.IDprogramedu OR usuariosbibli.idpe = 0) AND YEAR(FechaEntrada) = 2021 AND MONTH(FechaEntrada) = 12 AND DAY(FechaEntrada) = 01 ORDER BY reg_visitas.FechaEntrada;
+
+
+ 
+Registro Diario, Formulario F-SB-01
+
+SELECT usuariosbibli.`nombre(s)`, usuariosbibli.apellidos, usuariosbibli.sexo, usuariosbibli.idtipo, tipousuario.tusuario, programedu.nom_programedu, uniacademica.nom_uniaca, usuariosbibli.nivel, reg_visitas.servicios, reg_visitas.FechaEntrada, reg_visitas.FechaSalida
+FROM usuariosbibli, tipousuario, programedu, reg_visitas, uniacademica
+WHERE
+	(reg_visitas.matricula = usuariosbibli.matricula OR reg_visitas.matricula = usuariosbibli.codigobarra) AND
+    usuariosbibli.idtipo = tipousuario.IDusuario AND
+    usuariosbibli.idpe = programedu.IDprogramedu AND 
+    uniacademica.IDuniaca = usuariosbibli.id_uni_acad AND
+	YEAR(FechaEntrada) = 2022 AND MONTH(FechaEntrada) = 02
+ORDER BY reg_visitas.FechaEntrada;
+
+Update 1
+SELECT usuariosbibli.`nombre(s)`, usuariosbibli.apellidos, usuariosbibli.sexo, tipousuario.tusuario, uniacademica.nom_uniaca, programedu.nom_programedu, usuariosbibli.nivel, reg_visitas.servicios, reg_visitas.FechaEntrada, reg_visitas.FechaSalida
+FROM usuariosbibli, tipousuario, programedu, reg_visitas, uniacademica
+WHERE
+	(reg_visitas.matricula = usuariosbibli.matricula OR reg_visitas.matricula = usuariosbibli.codigobarra) AND
+    usuariosbibli.idtipo = tipousuario.IDusuario AND
+    usuariosbibli.idpe = programedu.IDprogramedu AND 
+    uniacademica.IDuniaca = usuariosbibli.id_uni_acad AND
+	YEAR(FechaEntrada) = 2022 AND MONTH(FechaEntrada) = 03
+ORDER BY reg_visitas.FechaEntrada;
+
+Update 2
+
+SELECT CONCAT_WS(' ', usuariosbibli.`nombre(s)`, usuariosbibli.apellidos ) AS Nombre, uniacademica.nom_uniaca as UNIDAD_ACADEMICA, programedu.nom_programedu AS PROGRAMA_EDUCATIVO, tipousuario.tusuario, reg_visitas.servicios, reg_visitas.FechaEntrada, reg_visitas.FechaSalida
+FROM usuariosbibli, tipousuario, programedu, reg_visitas, uniacademica
+WHERE
+	(reg_visitas.matricula = usuariosbibli.matricula OR reg_visitas.matricula = usuariosbibli.codigobarra) AND
+    usuariosbibli.idtipo = tipousuario.IDusuario AND
+    usuariosbibli.idpe = programedu.IDprogramedu AND 
+    uniacademica.IDuniaca = usuariosbibli.id_uni_acad AND
+	YEAR(FechaEntrada) = 2022 AND MONTH(FechaEntrada) = 03
+ORDER BY reg_visitas.FechaEntrada;
+
+
+ 
+Registro Mensual, Formulario F-SB-02 Hoja 1
+
+SELECT DAY(FechaEntrada) AS "Dia",
+COUNT( CASE WHEN usuariosbibli.sexo = "Hombre" THEN 1 END ) AS "Hombres",
+COUNT( CASE WHEN usuariosbibli.sexo = "Mujer" THEN 1 END ) AS "Mujeres",
+COUNT( CASE WHEN (usuariosbibli.idtipo = "1" OR usuariosbibli.idtipo = "2" OR usuariosbibli.idtipo = "3" ) THEN 1 END ) AS "Estudiantes",
+COUNT( CASE WHEN usuariosbibli.idtipo = "4" THEN 1 END ) AS "Investigador",
+COUNT( CASE WHEN usuariosbibli.idtipo = "5" THEN 1 END ) AS "Acádemico",
+COUNT( CASE WHEN usuariosbibli.idtipo = "6" THEN 1 END ) AS "Administrativo",
+COUNT( CASE WHEN (usuariosbibli.idtipo = "1" OR usuariosbibli.idtipo = "2" OR usuariosbibli.idtipo = "3"
+                  OR usuariosbibli.idtipo = "4" OR usuariosbibli.idtipo = "5" OR usuariosbibli.idtipo = "6" ) THEN 1 END ) AS "Interno",
+COUNT( CASE WHEN usuariosbibli.idtipo = "7" THEN 1 END ) AS "Externo",
+COUNT( CASE WHEN MATCH(reg_visitas.servicios) AGAINST ('Sala') THEN 1 END ) AS "Sala",
+COUNT( CASE WHEN MATCH(reg_visitas.servicios) AGAINST ('Domicilio') THEN 1 END ) AS "Prestamo a Domicilio",
+COUNT( CASE WHEN MATCH(reg_visitas.servicios) AGAINST ('Inter') THEN 1 END ) AS "Prestamo Interbibliotecario",
+COUNT( CASE WHEN MATCH(reg_visitas.servicios) AGAINST ('BaseDatos') THEN 1 END ) AS "Consulta de Base de Datos",
+COUNT( CASE WHEN MATCH(reg_visitas.servicios) AGAINST ('Computo') THEN 1 END ) AS "Uso de Computadora",
+COUNT( CASE WHEN MATCH(reg_visitas.servicios) AGAINST ('Referencia') THEN 1
+      WHEN MATCH(reg_visitas.servicios) AGAINST ('Cubiculo') THEN 1 
+      WHEN MATCH(reg_visitas.servicios) AGAINST ('Videoteca') THEN 1
+      WHEN MATCH(reg_visitas.servicios) AGAINST ('riaa') THEN 1
+      WHEN MATCH(reg_visitas.servicios) AGAINST ('Auditorio') THEN 1
+      WHEN MATCH(reg_visitas.servicios) AGAINST ('SUM') THEN 1
+      WHEN MATCH(reg_visitas.servicios) AGAINST ('Tesis') THEN 1
+      WHEN MATCH(reg_visitas.servicios) AGAINST ('Guiadas') THEN 1
+      WHEN MATCH(reg_visitas.servicios) AGAINST ('Tesiteca') THEN 1
+      WHEN MATCH(reg_visitas.servicios) AGAINST ('Info') THEN 1
+      WHEN MATCH(reg_visitas.servicios) AGAINST ('Devolucion') THEN 1
+      WHEN MATCH(reg_visitas.servicios) AGAINST ('Otro') THEN 1
+      END ) AS "Otros"
+FROM usuariosbibli 
+INNER JOIN reg_visitas ON (reg_visitas.matricula = usuariosbibli.matricula OR reg_visitas.matricula = usuariosbibli.codigobarra)
+WHERE YEAR(FechaEntrada) = 2022 AND MONTH(FechaEntrada) = 02
+GROUP BY DAY(FechaEntrada);
+
+ 
+Registro Mensual, Formulario F-SB-02 Hoja 2
+
+SELECT programedu.nom_programedu, COUNT(programedu.nom_programedu) as Afluencia FROM reg_visitas, programedu, usuariosbibli
+WHERE (reg_visitas.matricula = usuariosbibli.matricula OR reg_visitas.matricula = usuariosbibli.codigobarra)
+AND usuariosbibli.idpe = programedu.IDprogramedu
+AND YEAR(FechaEntrada) = 2022 AND MONTH(FechaEntrada) = 02
+GROUP BY nom_programedu;
+
+Consulta de buscar duplicados y mostrarlos
+
+SELECT * FROM usuariosbibli WHERE apellidos IN (
+    SELECT apellidos FROM usuariosbibli GROUP BY `nombre(s)`, apellidos HAVING COUNT(apellidos)>1 )
+ORDER BY apellidos;
+
+Buscar las matriculas repetidas en la tabla de registros
+
+SELECT * FROM `reg_visitas` WHERE matricula = 'valor_matricula';
+
+Contar cuántos usuarios tenemos en total
+
+SELECT COUNT(*) as Usuarios FROM `usuariosbibli`;
+
+Contar cuántos registros tenemos en total
+
+SELECT COUNT(*) as Registros FROM `reg_visitas`;
+
+Mostrar los registros repetidos con doble entrada
+
+SELECT * FROM reg_visitas WHERE estatus = 0 AND matricula IN (
+	SELECT matricula FROM reg_visitas GROUP BY matricula HAVING COUNT(matricula)>1)
+ORDER BY matricula;
+
+Matriculas repetidas por día
+
+SELECT matricula FROM reg_visitas WHERE YEAR(FechaEntrada) = 2022 AND MONTH(FechaEntrada) = 03 AND DAY(FechaEntrada) = 30 GROUP BY matricula HAVING COUNT(matricula)>1;
+ 
+Mostrar errores con doble registro de salida
+
+SELECT * FROM reg_visitas WHERE YEAR(FechaEntrada) = 2022 AND MONTH(FechaEntrada) = 03 AND DAY(FechaEntrada) = 23 AND matricula IN (
+    SELECT matricula FROM reg_visitas WHERE YEAR(FechaEntrada) = 2022 AND MONTH(FechaEntrada) = 03 AND DAY(FechaEntrada) = 23 GROUP BY matricula HAVING COUNT(matricula)>1 )
+ORDER BY matricula;

@@ -1,0 +1,75 @@
+/*@page {
+ /*margin: 5%;*/
+  /*margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  header: html_myHTMLHeaderOdd;
+  footer: html_myHTMLFooterOdd;
+}/*/
+
+table, th, td {
+	border-collapse: collapse;
+}
+
+.tablePDF{
+	border-collapse: collapse;
+	/*border: 1px solid;*/
+	font-size: 9px;
+	font-family: Calibri;
+}
+
+.borderline-center{
+	border: 1px solid;
+	text-align: center;
+}
+
+.borderline-left{
+	border: 1px solid;
+	text-align: left;
+}
+
+.borderline-c-color{
+	border: 1px solid;
+	text-align: center;
+	background-color: rgb(141,180,226);
+}
+
+.borderline-l-text{
+	border: 1px solid;
+	text-align: center;
+	width: 25%;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.borderline-s-text{
+	border: 1px solid;
+	width: 18%;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.resultados{
+	font-weight: bold;
+	text-align: center;
+	border: 2px solid;
+}
+
+.hombres{
+	font-weight: bold;
+	text-align: center;
+	border: 2px solid;
+	color: red;
+	border-color: black;
+}
+
+.mujeres{
+	font-weight: bold;
+	text-align: center;
+	border: 2px solid;
+	color: blue;
+	border-color: black;
+}

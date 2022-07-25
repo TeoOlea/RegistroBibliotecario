@@ -10,7 +10,6 @@
 			}
 		</script>
 	</head>
-	
 	<body>
 
 		<?php
@@ -21,11 +20,11 @@
 		<div class="header">
 			<table>
 				<tr>
-					<th class="logo"><img src="images/uaem.png" width="100"  alt="UAEM" title="UAEM" /></th>
+					<th class="logo"><img src="images/uaem.png" width="160"  alt="UAEM" title="UAEM" /></th>
 					<th class="txt">Universidad Autónoma del Estado de Morelos <br />
 					   Dirección de Desarrollo de Bibliotecas <br />
 					   Biblioteca Central Universitaria <br /></th>
-					<th class="logo"><img src="images/bcu.png" width="100"  alt="BCU" title="BCU" /></th>
+					<th class="logo"><img src="images/bcu.png" width="160"  alt="BCU" title="BCU" /></th>
 				</tr>
 			</table>
 		</div>
@@ -42,8 +41,10 @@
 			<br />
 			<?php
 				if( $tipoDeAlta == "alta" ){
+					echo "<META HTTP-EQUIV='REFRESH' CONTENT='1;URL=FormularioAlta.php'>";
 					echo "<a href='FormularioAlta.php'>Regresar</a>";
 				}else if( $tipoDeAlta == "alta-externo" ){
+					echo "<META HTTP-EQUIV='REFRESH' CONTENT='1;URL=FormularioAltaExterno.php'>";
 					echo "<a href='FormularioAltaExterno.php'>Regresar</a>";
 				}
 			?>

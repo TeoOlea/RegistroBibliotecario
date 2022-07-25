@@ -1,0 +1,428 @@
+*{
+	box-sizing: border-box;
+}
+
+body{
+	width: 950px;
+	margin: 0px auto;
+	font: 18px/28px "Lucida Sans", "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+ }
+
+.header{
+    color: black;
+    padding: 45px;
+    padding-bottom:10px;
+    border-bottom-color: #00FF00;
+    border-bottom-width: thick;
+ }
+
+.logo{
+   height: auto;
+}
+
+.logof, .logoadmin{
+   width:100px;
+   float:right;
+   clear:right;
+}
+
+.txt{
+	font-size: 120%;
+	width: 90%;
+	text-align:center;
+}
+
+.txtf, .txtadmin{
+   width:86%;
+   text-align:center;
+}
+
+.resaltar{
+	text-decoration: underline red;
+	/*border-bottom: 2px solid #88b2ff;*/
+}
+
+/********************************* pié de página  ***********************************************/
+.footer {
+    background-color: grey;
+    color: white;
+    padding: 5px;
+    font-size: 12px;
+    text-align:center;
+    vertical-align:middle;
+}
+
+.footerext {
+    background-color: #5091E4;
+    color: white;
+    padding: 5px;
+    font-size:12px;
+    text-align:center;
+    vertical-align:middle;
+}
+
+.footeradmin {
+    background-color:#43B184;
+    color: white;
+    padding: 5px;
+    font-size:12px;
+    text-align:center;
+    vertical-align:middle;
+}
+
+#login{
+	width: 25px;	
+}
+
+.column {
+    float: left;
+    padding: 0 15px;
+	
+}
+
+.column01 {
+/*   float: left; */
+    padding: 15px;
+    bottom:50px;
+    padding-bottom:4%;
+    
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.content {
+    width: 100%;
+    text-align:center;
+    padding-top:5%;
+}
+
+.menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li {
+    padding: 8px;
+    margin-bottom: 8px;
+    color: #000;
+	/*background-color: #33b5e5;*/
+}
+
+.menu li:hover {
+    background-color: #0099cc;
+    color: #ffffff;
+}
+
+.linkexterno{
+	text-align: right;
+}
+
+/****************************Estilos del formulario*************************************/ 
+
+.input_reg{
+	font: 20px "Lucida Sans", "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+	height:auto;
+    width:300px; 
+}
+
+:-moz-placeholder {
+    color: blue;
+}
+ 
+::-webkit-input-placeholder {
+    color: blue;
+}
+
+.encabezado{
+	width:550px;
+	margin: 0 auto;
+	border-bottom: 1px solid #777
+}
+
+.contact_form  {
+   padding:2px;
+}
+
+*:focus{
+	outline: none;
+}
+
+.contact_form h2, .contact_form label{
+	font-family:Georgia, Times, "Times New Roman", serif;
+}
+
+.form_hint, .required_notification{
+	font-size: 11px;
+}
+
+.contact_form h2 {
+    display: inline;
+	text-align: center;
+}
+
+/* Quitarle el estilo a la lista*/
+
+.contact_form ul {
+    width:500px;
+    list-style-type:none;
+    list-style-position:outside;
+    margin: 0px auto;
+    padding:0px;
+	cursor:pointer;
+}
+
+.contact_form li{
+    padding:5px; 
+    border-bottom:1px solid #eee;
+    text-align: center;
+}
+
+.contact_form li:last-child {
+    border-bottom:1px solid #777;
+}
+
+.required_notification {
+    color:#d45252; 
+    margin:5px 0 0 0; 
+    display:inline;
+    float:right;
+}
+
+/*elementos de entrada*/
+.contact_form label, #formulario label, {
+    width:150px;
+    margin-top: 3px;
+    display:inline-block;
+    float:left;
+    padding:3px;
+}
+
+.contact_form input[type="text"],select, .contact_form input[type="password"], .contact_form select,.contact_form input[type="email"], #formulario input[type="text"],select, #formulario input[type="password"], #formulario select, #formulario input[type="email"]{
+    font: 20px "Lucida Sans", "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+	height:auto;
+    width:300px; 
+    padding:2px;
+	
+}
+
+/*Unidad academica y programa de estudio*/
+/*.contact_form #uni_aca, #pro_edu option{
+    height:30px; 
+    width:350; 
+    padding:2px;
+	
+}*/
+
+.contact_form input[type="radio"], #formulario input[type="radio"]{
+    height:30px; 
+    width:auto; 
+    padding:0;
+	text-align: left;
+	margin:0;
+	display: inline-block;
+	vertical-align:middle;
+}
+.contact_form textarea, #formulario textarea {padding:8px; width:300px;}
+.contact_form button, #formulario button {margin-left:156px;}
+
+/*botón de envío*/
+.contact_form input[type="text"], .contact_form input[type="password"], .contact_form textarea, #formulario input[type="text"], #formulario input[type="password"], #formulario textarea { 
+    border:1px solid #aaa;
+    box-shadow: 0px 0px 3px #ccc, 0 10px 15px #eee inset;
+    border-radius:2px;
+}
+.contact_form input:focus, .contact_form textarea:focus, #formulario input:focus, #formulario textarea:focus {
+    background: #90EE90; 
+    border:1px solid #555; 
+    box-shadow: 0 0 3px #aaa; 
+}
+
+.ratio_appearance{
+	cursor: pointer;
+}
+
+/****************************Boton Aceptar y cancelar del formulario*************************************/
+
+.evento_cancelar{
+	font: 22px "Lucida Sans", "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+	background: #ce0002;
+	color: white;
+	cursor: pointer;
+	border-radius: 8px 8px 8px 8px;
+}
+
+.evento_alta{
+	font: 22px "Lucida Sans", "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+	background: #4dc500;
+	color: white;
+	cursor: pointer;
+	border-radius: 8px 8px 8px 8px;
+}
+
+.evento_alta_gris{
+	font: 22px "Lucida Sans", "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+	background-color: -internal-light-dark(rgba(239, 239, 239, 0.3), rgba(59, 59, 59, 0.3));
+    color: -internal-light-dark(rgb(84, 84, 84), rgb(170, 170, 170));
+    border-color: rgba(118, 118, 118, 0.3);
+	border-radius: 8px 8px 8px 8px;
+}
+
+/* Button Style */
+.submit {
+	font: 20px "Lucida Sans", "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+    background-color: #0099cc;/*#68b12f;*/
+    background: -webkit-gradient(linear, left top, left bottom, from(#0099cc), to(#5091E4));
+    background: -webkit-linear-gradient(top, #0099cc, #5091E4);
+    background: -ms-linear-gradient(top, #0099cc, #5091E4);
+    background: -o-linear-gradient(top, #0099cc, #5091E4);
+    background: -linear-gradient(top, #0099cc, #5091E4);
+    border: 1px solid #227AF8;
+    border-bottom: 1px solid #227AF8;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    box-shadow: inset 0 1px 0 0 #227AF8;
+    -webkit-box-shadow: 0 1px 0 0 #227AF8 inset ;
+    -moz-box-shadow: 0 1px 0 0 #227AF8 inset;
+    -ms-box-shadow: 0 1px 0 0 #227AF8 inset;
+    -o-box-shadow: 0 1px 0 0 #227AF8 inset;
+    color: white;
+    font-weight: bold;
+    padding: 6px 20px;
+    text-align: center;
+    text-shadow: 0 -1px 0 #3948FF;
+}
+
+.submit:hover {
+    opacity:.85;
+    cursor: pointer; 
+}
+
+.submit:active {
+    border: 1px solid #20911e;
+    box-shadow: 0 0 10px 5px #12A3EB inset; 
+    -webkit-box-shadow:0 0 10px 5px #12A3EB inset ;
+    -moz-box-shadow: 0 0 10px 5px #12A3EB inset;
+    -ms-box-shadow: 0 0 10px 5px #12A3EB inset;
+    -o-box-shadow: 0 0 10px 5px #12A3EB inset;
+     
+}
+
+/*Interactividad en los inputs*/
+
+.contact_form input[type="text"]:focus, select, .contact_form input[type="password"], .contact_form textarea:focus, #formulario input[type="text"]:focus, select, #formulario input[type="password"], #formulario textarea:focus  { /* add this to the already existing style */
+    padding-right:70px;
+}
+
+.contact_form input[type="text"], .contact_form input[type="password"], .contact_form textarea, #formulario input[type="text"], #formulario input[type="password"], #formulario textarea { /* add this to the already existing style */
+    -moz-transition: padding .25s; 
+    -webkit-transition: padding .25s; 
+    -o-transition: padding .25s;
+    transition: padding .25s;
+}
+
+/*estilizar los campos seleccionados*/
+.contact_form input[type="text"], .contact_form input[type="password"], .contact_form input[type="email"]:required, select, .contact_form textarea, #formulario input[type="text"], #formulario input[type="password"], #formulario input[type="email"]:required, select, #formulario textarea{
+    padding-right:30px;
+}
+
+input[type="text"]:required, .contact_form input[type="password"]:required, .contact_form input[type="email"]:required, textarea:required, #formulario input[type="password"]:required, #formulario input[type="email"]:required, textarea:required, {
+    background: #fff url(req.png) no-repeat 98% center;
+}
+/*personalizando la burbuja del mensaje de validación*/
+::-webkit-validation-bubble-message {
+    padding: 1em;
+}
+
+/*campo de nombre*/
+.contact_form input[type="text"]:focus:invalid, .contact_form input[type="password"]:focus:invalid,  .contact_form input[type="email"]:focus:valid, .contact_form textarea:focus:invalid, #formulario input[type="text"]:focus:invalid, #formulario input[type="password"]:focus:invalid,  #formulario input[type="email"]:focus:valid, #formulario textarea:focus:invalid { /* when a field is considered invalid by the browser */
+  /*  background: #fff url(req.png) no-repeat 98% center;*/
+    box-shadow: 0 0 5px #d45252;
+    border-color: #b03535;
+}
+
+select{
+    background: #fff;
+    box-shadow: 0 0 5px #5cd053;
+    border-color: blue;
+}
+
+.contact_form input[type="text"]:required:valid, .contact_form input[type="password"]:required:valid,.contact_form input[type="email"]:required:valid, .contact_form textarea:required:valid { /* when a field is considered valid by the browser */
+    background: #fff url(../images/adv.png) no-repeat 98% center;
+    box-shadow: 0 0 5px #5cd053;
+    border-color: blue;
+}
+
+.form_hint {
+    background: #d45252;
+    border-radius: 3px 3px 3px 3px;
+    color: white;
+    margin-left:8px;
+    padding: 1px 6px;
+    z-index: 999; /* hints stay above all other elements */
+    position: absolute; /* allows proper formatting if hint is two lines */
+    display: none;
+}
+
+.form_hint::before {
+    content: "\25C0"; /* left point triangle in escaped unicode */
+    color:#d45252;
+    position: absolute;
+    top:1px;
+    left:-6px;
+}
+
+.contact_form input:focus + .form_hint {display: inline;}
+.contact_form input:required:valid + .form_hint {background: #1777EC;} /* change form hint color when valid */
+.contact_form input:required:valid + .form_hint::before {color:#1777EC;} /* change form hint arrow color when valid */
+
+/* Cambio de clase para identificar el error del usuario */
+
+/*#text_comment.error{
+	visibility: visible;
+	content: "Hola";
+}
+
+#text_comment.exito{
+	visibility: hidden;
+	content: "Mundo";
+}
+
+#mini.lista{
+	
+}*/
+
+.version{
+	text-align: right;
+	font: 10px "Lucida Sans", "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+}
+
+.advertencias{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+    align-items: center;
+	font: 12px/16px "Lucida Sans", "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+	font-style: italic;
+}
+
+.advertencias > div{
+	padding: 7px;
+	text-align: center;
+	width: 50%;
+}
+
+.icon_advertencia{
+	/*justify-content: center;
+	align-items:center;*/
+	float: left;
+	width: 35px;
+}
