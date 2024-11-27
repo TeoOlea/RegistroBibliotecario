@@ -13,6 +13,10 @@
 	$idTipo = $_SESSION['ExtTipo'];
 	$genero = $_SESSION['genero'];
 	$email = $_SESSION['email'];
+	date_default_timezone_set('America/Mexico_City');
+	$hoy = new DateTime('now', new DateTimeZone('America/Mexico_City'));
+	//$hoy->modify('-1 hours');
+	$fecha_hoy = $hoy->format('Y-m-d H:i:s');
 	
 	/*Codigo para confirmar el ID con la opción elegida
 	
@@ -30,6 +34,7 @@
 	//$idProgramaEducativo = $ArrayProgramaEducativo['nom_programedu'];
 	$nivelProgramaEducativo = $ArrayProgramaEducativo['nivel'];
 	//echo '<script>alert("'.$nivelProgramaEducativo.'");</script>';
+	echo '<script>alert("'.$nivelProgramaEducativo.'");</script>';
 	
 	/*
 	//Definir el nombre del tipo de usuario
@@ -64,13 +69,15 @@
 			
 			//Definimos que si el usuario metió un codigo de barras para darse de alta, se guarde en el campo correcto
 			if( strpos( $matricula, "U" ) === 0 ){
-				$sqlquery1 = "INSERT INTO usuariosbibli(matricula, codigobarra, `nombre(s)`, apellidos, idtipo, id_uni_acad, idpe, nivel, email, sexo) VALUES
-					( NULL, '$matricula', '$nombre', '$apellidos', '$idTipo', '$idUni_Acad', '$idProg_Edu', '$nivelProgramaEducativo', '$email', '$genero')";
+				$sqlquery1 = "INSERT INTO usuariosbibli(matricula, codigobarra, `nombre(s)`, apellidos, idtipo, id_uni_acad, idpe, nivel, email, sexo, FechaAlta) VALUES
+					( NULL, '$matricula', '$nombre', '$apellidos', '$idTipo', '$idUni_Acad', '$idProg_Edu', '$nivelProgramaEducativo', '$email', '$genero', '$fecha_hoy')";
 					//echo "<br/> $sqlquery1<br/> entro en codigo de barras";
 			}else{//Segmento de código dará de alta al usuario con una matricula
-				$sqlquery1 = "INSERT INTO usuariosbibli(matricula, codigobarra, `nombre(s)`, apellidos, idtipo, id_uni_acad, idpe, nivel, email, sexo) VALUES
-					( '$matricula', NULL, '$nombre', '$apellidos', '$idTipo', '$idUni_Acad', '$idProg_Edu', '$nivelProgramaEducativo', '$email', '$genero')";
+				$sqlquery1 = "INSERT INTO usuariosbibli(matricula, codigobarra, `nombre(s)`, apellidos, idtipo, id_uni_acad, idpe, nivel, email, sexo, FechaAlta) VALUES
+					( '$matricula', NULL, '$nombre', '$apellidos', '$idTipo', '$idUni_Acad', '$idProg_Edu', '$nivelProgramaEducativo', '$email', '$genero', '$fecha_hoy')";
 			}
+			
+			echo $sqlquery1;
 			
 			if( !$query = $mysqli->query( $sqlquery1 ) ){
 				$_SESSION['mensaje']="Lo sentimos, este sitio web está experimentando problemas. Error de Insercion en la BD";

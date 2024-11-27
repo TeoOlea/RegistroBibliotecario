@@ -5,27 +5,13 @@
 		<meta charset="utf-8">
 		<link rel="stylesheet" type="text/css" href="css/bibli.css">
 		<link rel="icon" type="image/png" href="images/favicon.ico">
+		<script src="js/plantillas.js"></script>
 	</head>
 	<META HTTP-EQUIV="REFRESH" CONTENT="5;URL=index.php">
 	<body>
 		<!-- --------Encabezado------------------ -->
-		<div class="header">
-			<table>
-				<tr>
-					<th class="logo">
-						<a href="index.php"><img src="images/uaem.png" width="160"  alt="UAEM" title="UAEM"/>
-					</th>
-					<th class="txt">
-						Universidad Autónoma del Estado de Morelos <br/>
-						Dirección de Desarrollo de Bibliotecas <br/>
-						Biblioteca Central Universitaria <br/>
-					</th>
-					<th>
-						<img src="images/bcu.png" width="160"  alt="BCU" title="BCU" />
-					</th>
-				</tr>
-			</table>
-		</div>
+		<!--Plantilla del encabezado guardado en plantillas.js-->
+		<script>hacerEncabezado();</script>
 		<!-- ---------Cuerpo----------------- -->
 		<div class="clearfix">
 			<div class="content column01">
@@ -49,10 +35,15 @@
 							//Segmento para el agregado a la tabla de visita
 							$mysqli =new mysqli ($host,$user,$pw, $db);
 							$mysqli->set_charset("utf8");
-							date_default_timezone_set('America/Mexico_City');
-							$hoy = date("Y-m-d H:i:s", time());//Format para y fecha y hora
+							//date_default_timezone_set('America/Mexico_City');
+							//$hoy = new DateTime("Y-m-d H:i:s", time());//Format para y fecha y hora
+							$hoy = new DateTime('now', new DateTimeZone('America/Mexico_City'));
+							//$hoy->modify('-1 hours');//horario de verano
+							$fecha_hoy = $hoy->format('Y-m-d H:i:s');
+							//$hoy = new DateTime("Y-m-d H:i:s", time());//Format para y fecha y hora
+							//$hoy->modify('-1 hour');
 							//$mysqli_query("INSERT INTO visitas (IDUsuario,SERVICIOS,IDPE,status,FechaEntrada) VALUES('$_SESSION[matricula]', '$servicio', '$_SESSION[proedu]', '$_SESSION[estatus]',' NOW()')",$mysqli);	        	
-							$sql1 = "INSERT INTO reg_visitas (matricula, servicios, estatus, FechaEntrada) VALUES( '$_SESSION[matricula]', '$servicio', '0','$hoy')";
+							$sql1 = "INSERT INTO reg_visitas (matricula, servicios, estatus, encuesta, FechaEntrada) VALUES( '$_SESSION[matricula]', '$servicio', '0', '$_SESSION[encuesta]', '$fecha_hoy')";
 							mysqli_query( $mysqli, $sql1 );		       
 							echo 'Se han registrado los siguientes servicios';
 							echo '<p> <b>';
@@ -91,22 +82,8 @@
 				</div>
 			</div>
 		</div>
-		<!-- ---------Pie de pagina----------------- -->
-		<div class="footer">
-			<table>
-				<tr>
-					<th class="logo">
-						
-					</th>
-					<th class="txt">
-						Universidad Autónoma del Estado de Morelos Av. Universidad 1001. Col. Chamilpa. Cuernavaca, Morelos. C. P. 62209.
-					</th>
-					<th class="logo">
-						
-					</th>
-				</tr>
-			</table>
-		</div>
+		<!--Plantilla para el pie de pagina guardado en plantillas.js-->
+		<script>hacerPiePagina();</script>
 		<audio autoplay>
 			<source src="music/acierto.mp3">
 			Tu navegador no es compatible con el audio en HTML5

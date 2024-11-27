@@ -131,11 +131,14 @@
 						<label>Unidad Académica: </label>
 						<select name="uni_aca" id="uni_aca" required placeholder="Elige una unidad academica">
 							<option value="" selected>Seleccione:</option>
+							<option value=0>NO APLICA</option>
 							<?php
-								$sqlquery1 = "SELECT * FROM uniacademica";
+								$sqlquery1 = "SELECT * FROM uniacademica ORDER BY nom_uniaca ASC";
 								$query = $mysqli->query($sqlquery1);
+								
 								while( $tabla_uniacad = mysqli_fetch_array($query) ){
-									echo "<option value='".$tabla_uniacad['IDuniaca']."'>".$tabla_uniacad['nom_uniaca']."</option>";
+									if( $tabla_uniacad['IDuniaca'] != 0 )
+										echo "<option value='".$tabla_uniacad['IDuniaca']."'>".$tabla_uniacad['nom_uniaca']."</option>";
 								}
 							?>
 						</select>
@@ -144,11 +147,13 @@
 						<label>Programa Educativo: </label>
 						<select name="pro_edu"id="pro_edu" required placeholder="Elige tu programa educativo">
 							<option value="" selected>Seleccione:</option>
+							<option value=0>NO APLICA</option>
 							<?php
-								$sqlquery1 = "SELECT * FROM programedu";
+								$sqlquery1 = "SELECT * FROM programedu ORDER BY nom_programedu ASC";
 								$query = $mysqli->query($sqlquery1);
 								while( $tabla_programedu = mysqli_fetch_array($query) ){
-									echo "<option value='".$tabla_programedu['IDprogramedu']."'>".$tabla_programedu['nom_programedu']."</option>";
+									if( $tabla_programedu['IDprogramedu'] != 0 )
+										echo "<option value='".$tabla_programedu['IDprogramedu']."'>".$tabla_programedu['nom_programedu']."</option>";
 								}
 							?>
 						</select>
@@ -192,7 +197,6 @@
 				<th class="txtf">
 					Universidad Autónoma del Estado de Morelos Av. Universidad 1001. Col. Chamilpa. Cuernavaca, Morelos. C. P. 62209. 
 				</th>
-						
 				<th class="logof"></th>
 				</tr>
 			</table>   
