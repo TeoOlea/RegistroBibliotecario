@@ -3,89 +3,249 @@
 }
 
 body{
-	width: 950px;
+	width: 1280px;
 	margin: 0px auto;
-	font: 18px/28px "Lucida Sans", "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+	font: 18px/20px "Open Sans", sans-serif;
+	/*background-color: rgb(228, 232, 236);*/
+	/*background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5));*/
+	background-image: url("../images/FondoRegistro1920.png");
  }
 
 .header{
-    color: black;
-    padding: 45px;
+    padding-top: 25px;
     padding-bottom:10px;
     border-bottom-color: #00FF00;
-    border-bottom-width: thick;
+    border-bottom-width: 10px;
  }
 
 .logo{
-   height: auto;
+   /*height: 140px;*/
+   height: 114px;
 }
 
-.logof, .logoadmin{
+.max{
+	max-height: 100%;
+}
+
+.txt{
+	font-size: 30px;
+	color: rgb(49, 121, 170);
+	letter-spacing: 1px;
+	line-height: 46px;
+	width: 90%;
+	text-align:center;
+}
+
+.logof, .logoadmin, .logoe{
    width:100px;
    float:right;
    clear:right;
 }
 
-.txt{
-	font-size: 120%;
-	width: 90%;
-	text-align:center;
-}
-
-.txtf, .txtadmin{
+.txtf, .txtadmin, .txte{
    width:86%;
    text-align:center;
 }
 
 .resaltar{
+	text-decoration: underline rgb(3, 3, 105);
+}
+
+.resaltar_rojo{
 	text-decoration: underline red;
-	/*border-bottom: 2px solid #88b2ff;*/
 }
 
-/********************************* pié de página  ***********************************************/
-.footer {
-    background-color: grey;
-    color: white;
-    padding: 5px;
-    font-size: 12px;
-    text-align:center;
-    vertical-align:middle;
+/********************************* portada ***********************************************/
+
+.welcome{
+	width: 100%;
+	font-size: 45px;
+	color: rgb(3, 3, 105);
+    text-align: center;
+	line-height: 50px;
 }
 
-.footerext {
-    background-color: #5091E4;
-    color: white;
-    padding: 5px;
-    font-size:12px;
-    text-align:center;
-    vertical-align:middle;
+.info{
+	font-weight: bolder;
+	font-size: 35px;
+	letter-spacing: 1px;
+	line-height: 40px;
+	color: rgb(3, 3, 105);
+	text-align: center;
 }
 
-.footeradmin {
-    background-color:#43B184;
-    color: white;
-    padding: 5px;
-    font-size:12px;
-    text-align:center;
-    vertical-align:middle;
+.linea_azul{
+	margin: 5px auto;
+	width: 50%;
+	border-bottom: 10px solid rgb(3, 3, 105);
+	padding-left: 100px;
 }
+
+.linea_azul_completa{
+	margin: 5px 0px;
+	border-bottom: 8px solid rgb(3, 3, 105);
+}
+
+.imagenesopcion{
+	display: flex;
+	justify-content: center;
+}
+
+#form_general{
+	display: flex;
+	align-items: center;
+	font-weight: bolder;
+	font-size: 30px;
+	color: rgb(3, 3, 105);
+	text-align: center;
+	flex-direction: column;
+}
+
+#form_general span{
+	margin: 15px 0px 15px 0px;
+}
+
+.imagenindex{
+	height: 140px;
+}
+
+.centrado_img{
+	display: flex;
+	justify-content: center;
+}
+
+.imagenesopcion > div{
+	margin: 10px 20px;
+	width: 50%;
+}
+
+.advertencias{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+    align-items: center;
+	font: 12px/16px "Lucida Sans", "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+	font-style: italic;
+}
+
+.dudas{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+    align-items: center;
+	font: 25px/40px "Open Sans", sans-serif;
+	font-weight: bold;
+	color: rgb(3, 3, 105);
+}
+
+.advertencias2{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+    align-items: center;
+	font: 20px/20px "Open Sans", sans-serif;
+	font-weight: bold;
+	color: rgb(3, 3, 105);
+}
+
+.advertencias > div{
+	padding: 7px;
+	text-align: center;
+	width: 50%;
+}
+
+.advertencias2 > div{
+	padding: 0px 10px;
+	text-align: left;
+	width: 50%;
+}
+
+.dudas > div{
+	padding: 0px 10px;
+	text-align: center;
+	width: 50%;
+}
+
+.icon_advertencia{
+	/*justify-content: center;
+	align-items:center;*/
+	float: left;
+	width: 35px;
+}
+
+.icon_duda{
+	align-items:center;
+	float: left;
+	width: 110px;
+}
+
+.parrafo_adv{
+	padding-left: 120px;
+}
+
+.publico_general{
+	font-weight: bolder;
+	font-size: 45px;
+	line-height: 70px;
+	color: rgb(3, 3, 105);
+	text-align: center;
+	padding-bottom: 15px;
+}
+
+/*****************************************************************************************/
+
+/*************************************Publico General*************************************/
+#form_general_publico{
+	display: flex;
+	align-items: center;
+	font-weight: bolder;
+	font-size: 30px;
+	color: rgb(3, 3, 105);
+	text-align: center;
+	flex-direction: column;
+}
+
+#form_general_publico span{
+	margin: 15px 0px 15px 0px;
+}
+
+.orden_check{
+	display: flex;
+	margin-bottom: 25px;
+}
+
+.pack_input_label{
+	display: flex;
+	margin: 0px 20px 0px 20px;
+}
+
+.orden_check input{
+	margin: 0px 8px 0px 0px;
+}
+
+.entrada_ext{
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 25px;
+}
+
+.salida_ext{
+	font-size: 50px;
+	margin: 15px 0px 25px 0px;
+}
+
+.salida_ext input{
+	font-size: 40px;
+	width: 150px;
+}
+
+/*****************************************************************************************/
 
 #login{
-	width: 25px;	
-}
-
-.column {
-    float: left;
-    padding: 0 15px;
-	
-}
-
-.column01 {
-/*   float: left; */
-    padding: 15px;
-    bottom:50px;
-    padding-bottom:4%;
-    
+	width: 25px;
 }
 
 .clearfix::after {
@@ -97,54 +257,112 @@ body{
 .content {
     width: 100%;
     text-align:center;
-    padding-top:5%;
+}
+
+.column01 {
+    bottom:50px;
+    padding-bottom: 2%;
+
+}
+
+.column {
+    float: left;
+    padding: 0 15px;
+}
+
+.menu{
+	font-size: 20px;
+}
+
+.sel_tip{
+	padding: 10px;
+	font-size: 30px;
+	color: rgb(3, 3, 105);
 }
 
 .menu ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+	margin: 0px 0px;
+	text-align: left;
+	padding: 0px
+}
+
+.table_design{
+	display: flex;
+	justify-content: center;
+	margin: 30px 0px;
+	border-spacing: 72px 0px;
+	padding: 0px 0px;
+}
+
+.menu label{
+	display: flex;
+	align-items: center;
+}
+
+tr{
+	height: 49px;
 }
 
 .menu li {
-    padding: 8px;
-    margin-bottom: 8px;
-    color: #000;
-	/*background-color: #33b5e5;*/
+	display: inline-block;
+	vertical-align: middle;
 }
 
 .menu li:hover {
     background-color: #0099cc;
-    color: #ffffff;
+    color: white;
+}
+
+.menu input[type="checkbox" i] {
+	margin: 0px 5px;
+	cursor: pointer;
 }
 
 .linkexterno{
 	text-align: right;
 }
 
-/****************************Estilos del formulario*************************************/ 
+.edit_otro{
+	display: flex;
+	flex-direction: column;
+}
+
+/****************************Estilos del formulario*************************************/
 
 .input_reg{
 	font: 20px "Lucida Sans", "Lucida Grande", "Lucida Sans Unicode", sans-serif;
 	height:auto;
-    width:300px; 
+    width:300px;
 }
 
 :-moz-placeholder {
-    color: blue;
-}
- 
-::-webkit-input-placeholder {
-    color: blue;
+	font-size: 18px;
+    color: black;
 }
 
+::-webkit-input-placeholder {
+	font-size: 18px;
+    color: black;
+}
+
+/* Change the white to any color */
+/*input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+/*Change text in autofill textbox*/
+/*input:-webkit-autofill{
+    -webkit-text-fill-color: yellow !important;
+}*/
+
 .encabezado{
-	width:550px;
 	margin: 0 auto;
 	border-bottom: 1px solid #777
 }
 
-.contact_form  {
+.contact_form {
    padding:2px;
 }
 
@@ -153,7 +371,7 @@ body{
 }
 
 .contact_form h2, .contact_form label{
-	font-family:Georgia, Times, "Times New Roman", serif;
+	font-family:"Open Sans Light", "Open Sans", sans-serif;
 }
 
 .form_hint, .required_notification{
@@ -161,6 +379,8 @@ body{
 }
 
 .contact_form h2 {
+	font-size: 40px;
+	color: rgb(3, 3, 105);
     display: inline;
 	text-align: center;
 }
@@ -177,7 +397,7 @@ body{
 }
 
 .contact_form li{
-    padding:5px; 
+    padding:5px;
     border-bottom:1px solid #eee;
     text-align: center;
 }
@@ -187,8 +407,8 @@ body{
 }
 
 .required_notification {
-    color:#d45252; 
-    margin:5px 0 0 0; 
+    color:#d45252;
+    margin:5px 0 0 0;
     display:inline;
     float:right;
 }
@@ -205,41 +425,48 @@ body{
 .contact_form input[type="text"],select, .contact_form input[type="password"], .contact_form select,.contact_form input[type="email"], #formulario input[type="text"],select, #formulario input[type="password"], #formulario select, #formulario input[type="email"]{
     font: 20px "Lucida Sans", "Lucida Grande", "Lucida Sans Unicode", sans-serif;
 	height:auto;
-    width:300px; 
+    width:300px;
     padding:2px;
-	
+
 }
 
 /*Unidad academica y programa de estudio*/
 /*.contact_form #uni_aca, #pro_edu option{
-    height:30px; 
-    width:350; 
+    height:30px;
+    width:350;
     padding:2px;
-	
+
 }*/
 
 .contact_form input[type="radio"], #formulario input[type="radio"]{
-    height:30px; 
-    width:auto; 
+    height:30px;
+    width:auto;
     padding:0;
 	text-align: left;
 	margin:0;
 	display: inline-block;
 	vertical-align:middle;
 }
-.contact_form textarea, #formulario textarea {padding:8px; width:300px;}
-.contact_form button, #formulario button {margin-left:156px;}
+.contact_form textarea, #formulario textarea {
+	padding:8px;
+	width:300px;
+}
+
+.contact_form button, #formulario button {
+	margin-left:156px;
+}
 
 /*botón de envío*/
-.contact_form input[type="text"], .contact_form input[type="password"], .contact_form textarea, #formulario input[type="text"], #formulario input[type="password"], #formulario textarea { 
+.contact_form input[type="text"], .contact_form input[type="password"], .contact_form textarea, #formulario input[type="text"], #formulario input[type="password"], #formulario textarea {
     border:1px solid #aaa;
     box-shadow: 0px 0px 3px #ccc, 0 10px 15px #eee inset;
     border-radius:2px;
 }
 .contact_form input:focus, .contact_form textarea:focus, #formulario input:focus, #formulario textarea:focus {
-    background: #90EE90; 
-    border:1px solid #555; 
-    box-shadow: 0 0 3px #aaa; 
+    /*background: #90EE90;*/ /*Fondo verde cuando se selecciona el campo de texto*/
+	background: rgb(162, 183, 210);
+    /*border:1px solid #555;*/
+    box-shadow: 0 0 3px #aaa;
 }
 
 .ratio_appearance{
@@ -302,17 +529,16 @@ body{
 
 .submit:hover {
     opacity:.85;
-    cursor: pointer; 
+    cursor: pointer;
 }
 
 .submit:active {
     border: 1px solid #20911e;
-    box-shadow: 0 0 10px 5px #12A3EB inset; 
+    box-shadow: 0 0 10px 5px #12A3EB inset;
     -webkit-box-shadow:0 0 10px 5px #12A3EB inset ;
     -moz-box-shadow: 0 0 10px 5px #12A3EB inset;
     -ms-box-shadow: 0 0 10px 5px #12A3EB inset;
     -o-box-shadow: 0 0 10px 5px #12A3EB inset;
-     
 }
 
 /*Interactividad en los inputs*/
@@ -322,8 +548,8 @@ body{
 }
 
 .contact_form input[type="text"], .contact_form input[type="password"], .contact_form textarea, #formulario input[type="text"], #formulario input[type="password"], #formulario textarea { /* add this to the already existing style */
-    -moz-transition: padding .25s; 
-    -webkit-transition: padding .25s; 
+    -moz-transition: padding .25s;
+    -webkit-transition: padding .25s;
     -o-transition: padding .25s;
     transition: padding .25s;
 }
@@ -396,7 +622,7 @@ select{
 }
 
 #mini.lista{
-	
+
 }*/
 
 .version{
@@ -404,25 +630,300 @@ select{
 	font: 10px "Lucida Sans", "Lucida Grande", "Lucida Sans Unicode", sans-serif;
 }
 
-.advertencias{
+/*******************************Formulario de dependencia o ciudad*********************************/
+
+#dependencia{
 	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
+	align-items: center;
 	justify-content: center;
-    align-items: center;
-	font: 12px/16px "Lucida Sans", "Lucida Grande", "Lucida Sans Unicode", sans-serif;
-	font-style: italic;
-}
-
-.advertencias > div{
-	padding: 7px;
+	font-weight: bolder;
+	font-size: 30px;
+	color: rgb(3, 3, 105);
+	padding-bottom: 60px;
 	text-align: center;
-	width: 50%;
 }
 
-.icon_advertencia{
-	/*justify-content: center;
-	align-items:center;*/
-	float: left;
-	width: 35px;
+#comunidad{
+	justify-content: center;
+	font-weight: bolder;
+	font-size: 30px;
+	color: rgb(3, 3, 105);
+	padding-bottom: 60px;
+	text-align: center;
 }
+
+.espacio{
+	padding-bottom: 20px;
+}
+
+.input_dep{
+	color: black;
+	text-align: center;
+	font-size: 25px;
+	width: 500px;
+	background-color: rgb(162, 183, 210);
+	height: 50px;
+	margin: 0px 10px;
+}
+
+.input_comu{
+	color: black;
+	text-align: center;
+	font-size: 30px;
+	width: 550px;
+	background-color: rgb(162, 183, 210);
+	height: 50px;
+	margin: 0px 10px;
+	flex-wrap: wrap;
+}
+
+.input_otro{
+	border: none;
+	text-align: center;
+	color: black;
+	font-size: 20px;
+	width: 210px;
+	background-color: rgb(162, 183, 210);
+	height: 36px;
+	margin: 0px 21px;
+	/*flex-wrap: wrap;*/
+}
+
+.input_otro:disabled{
+	cursor: default;
+    background-color: rgba(239, 239, 239, 0.3);
+    border-color: rgba(118, 118, 118, 0.3);
+	border: 2px;
+}
+
+.input_otro:disabled::placeholder{
+    color: rgba(239, 239, 239, 0.3);
+}
+
+.env_dep{
+	background: rgb(49, 121, 163);
+	color: white;
+	cursor: pointer;
+	border-radius: 20px 20px 20px 20px;
+	height: 40px;
+	width: 150px;
+	border: 0px;
+	font-size: 25px;
+	/*font-weight: bold;*/
+	letter-spacing: 2px
+}
+
+/*Codigo del checkbox redondo*/
+.checkbox_redondo {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  outline: none;
+  cursor: pointer;
+}
+
+.checkbox_redondo:checked {
+  background-color: #007bff;
+}
+
+.checkbox_redondo:checked::before {
+  content: '\2713'; /* Unicode del símbolo de check */
+  display: block;
+  text-align: center;
+  line-height: 18px;
+  color: white;
+  font-weight: bold;
+}
+
+/*********************************pié de página***********************************************/
+.footer {
+    background-color: grey;
+    color: white;
+    padding: 5px;
+    font-size: 12px;
+    text-align:center;
+    vertical-align:middle;
+}
+
+.footerext {
+    background-color: #5091E4;
+    color: white;
+    padding: 5px;
+    font-size:12px;
+    text-align:center;
+    vertical-align:middle;
+}
+
+.footeradmin {
+    background-color:#43B184;
+    color: white;
+    padding: 5px;
+    font-size:12px;
+    text-align:center;
+    vertical-align:middle;
+}
+
+/********************************* encuesta ***********************************************/
+.encuesta{
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	margin: 40px;
+}
+
+.encuesta label{
+	margin: 0 10px;
+}
+
+.encuesta input[type="radio"]{
+	position: absolute;
+	opacity: 0;
+	/*pointer-events: none;*/
+}
+
+.encuesta input[type="radio"]:checked{
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Agregamos el box-shadow */
+}
+
+.encuesta img{
+	width: 150px;
+	height: 150px;
+	border: 2px solid transparent;
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+.encuesta img:hover{
+	border: 2px solid #000;
+	box-shadow: 0 0 50px rgba(49, 121, 163, 1.0); /* Agregamos el box-shadow */
+}
+
+.encuesta img:selected{
+	box-shadow: 0 0 50px rgba(49, 121, 163, 1.0); /* Agregamos el box-shadow */
+}
+
+.env_enc{
+	background: rgb(49, 121, 163);
+	color: white;
+	cursor: pointer;
+	border-radius: 20px 20px 20px 20px;
+	height: 40px;
+	width: 150px;
+	border: 0px;
+	font-size: 25px;
+	letter-spacing: 2px
+}
+
+/******************************Visitas Guiadas***************************/
+
+.visita_guiada{
+	font-weight: bolder;
+	font-size: 45px;
+	line-height: 60px;
+	color: rgb(3, 3, 105);
+	text-align: center;
+	padding-bottom: 20px;
+}
+
+#form_guiada{
+	display: flex;
+	align-items: center;
+	font-weight: bolder;
+	font-size: 30px;
+	color: rgb(3, 3, 105);
+	text-align: center;
+	flex-direction: column;
+}
+
+#form_guiada span{
+	margin: 15px 0px 15px 0px;
+}
+
+.nombre_prof{
+	color: black;
+	text-align: center;
+	font-size: 25px;
+	width: 600px;
+	background-color: rgb(162, 183, 210);
+	height: 50px;
+	margin: 0px 10px;
+}
+
+.input_guia_num{
+	color: black;
+	text-align: center;
+	font-size: 25px;
+	width: 100px;
+	background-color: rgb(162, 183, 210);
+	height: 50px;
+	margin: 0px 10px;
+}
+
+.uni_aca_guia{
+	color: black;
+	font-size: 20px;
+	width: 700px;
+	background-color: rgb(162, 183, 210);
+	height: 50px;
+	margin: 0px 10px;
+}
+
+
+
+/* Aplica un estilo personalizado para ocultar el control de desplazamiento en input tipo number */
+input[type="number" i]::-webkit-inner-spin-button,
+input[type="number" i]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+.tamaño_letra{
+	margin: 70px 0px 70px 0px;
+	font-size: 160px;
+}
+
+/*************************************Centro Computo*************************************/
+#centro_computo{
+	display: flex;
+	align-items: center;
+	text-align: center;
+	flex-direction: column;
+	font-weight: bolder;
+	font-size: 30px;
+	color: rgb(3, 3, 105);
+}
+
+.impresion_check{
+	display: flex;
+	justify-content: center;
+	margin: 20px 0px 15px 0px;
+}
+
+#computoInterno{
+	margin: 15px 0px 15px 0px;
+}
+
+#computoExterno{
+	margin: 15px 0px 15px 0px;
+}
+
+.env_apag{
+	background: rgb(49, 121, 163);
+	color: white;
+	cursor: pointer;
+	border-radius: 20px 20px 20px 20px;
+	height: 40px;
+	width: 200px;
+	border: 0px;
+	font-size: 25px;
+	/*font-weight: bold;*/
+	letter-spacing: 2px;
+	margin: 20px;
+}
+
+/***************************************************************************************/

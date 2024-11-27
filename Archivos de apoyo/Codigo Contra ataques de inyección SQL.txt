@@ -1,0 +1,43 @@
+Te voy a mostrar un estilo que a mi me gusta implementar y además daremos seguridad al código, ya que como tienes tu consulta ahora mismo es vulnerable a ataques de inyección SQL.
+
+La técnica consiste en recoger los valores del POST mediante un operador ternario. Cuando no haya datos en el POST podemos asignar NULL, una cadena vacía, o lo que fuera. En este caso asignaremos siempre NULL cuando no haya datos. Además esto sirve para parar la consulta cuando ciertas columnas esenciales sean nulas.
+
+El código sería así:
+
+
+$arrResult=array();  //Variable utilitaria para informar sobre el estado del código
+$matricula   = (!empty($_POST['matricula_1']))   ?  $_POST['matricula_1']   : NULL ;
+$nombre      = (!empty($_POST['nombre_1']))      ?  $_POST['nombre_1']      : NULL ;
+$apellido_pa = (!empty($_POST['apellido_pa_1'])) ?  $_POST['apellido_pa_1'] : NULL ;
+$apellido_ma = (!empty($_POST['apellido_ma_1'])) ?  $_POST['apellido_ma_1'] : NULL ;
+$id_carrera =  (!empty($_POST['id_carrera']))    ?  $_POST['id_carrera']    : NULL ;
+include_once('Conexion/Abrir_Conexion.php');
+
+$sql = "INSERT INTO alumno 
+            (
+                matricula, 
+                nombre, 
+                apellido_pa, 
+                apellido_ma, 
+                id_carrera
+            ) 
+            VALUES 
+            (   ?,
+                ?,
+                ?,
+                ?,
+                ?
+            )";
+$stmt=$conexion->prepare($sql);
+$stmt->bind_param("isssi",$matricula,$nombre,$apellido_pa,$apellido_ma, $id_carrera);
+if ($stmt->execute()){
+    /*Esto es sólo un gadget :) */
+    $totalInsert=$stmt->affected_rows;  
+    $mensaje=($totalInsert > 0) ? "Se ha insertado correctamente" : "No fue posible la inserción. Error: ".$stmt->error;  
+    $arrResult['mensaje'] = $mensaje;
+}else{
+    $arrResult['error'] = "No fue posible la inserción. Error:  ".$conexion->error;
+}
+
+$conexion->close();
+print_r($arrResult);
